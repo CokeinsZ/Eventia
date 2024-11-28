@@ -1,0 +1,61 @@
+package com.eventia.serverback.models;
+
+import java.time.LocalDateTime;
+
+public class Agenda {
+    private int agd_id;
+    private int ubc_id;
+    private int evt_id;
+    private int entradas_disponibles;
+    private LocalDateTime agd_fecha_inicio;
+    private LocalDateTime agd_fecha_fin;
+
+
+    public int getAgd_id() {
+        return agd_id;
+    }
+
+    public void setAgd_id(int agd_id) {
+        this.agd_id = agd_id;
+    }
+
+    public int getUbc_id() {
+        return ubc_id;
+    }
+
+    public void setUbc_id(int ubc_id) {
+        this.ubc_id = ubc_id;
+    }
+
+    public int getEvt_id() {
+        return evt_id;
+    }
+
+    public void setEvt_id(int evt_id) {
+        this.evt_id = evt_id;
+    }
+
+    public int getEntradas_disponibles() {
+        return entradas_disponibles;
+    }
+
+    public void setEntradas_disponibles(int entradas_disponibles) {
+        this.entradas_disponibles = entradas_disponibles;
+    }
+
+    public LocalDateTime getAgd_fecha_inicio() {
+        return agd_fecha_inicio;
+    }
+
+    public void setAgd_fecha_inicio(LocalDateTime agd_fecha_inicio) {
+        this.agd_fecha_inicio = agd_fecha_inicio;
+    }
+
+    public LocalDateTime getAgd_fecha_fin() {
+        return agd_fecha_fin;
+    }
+
+    public void setAgd_fecha_fin(LocalDateTime agd_fecha_fin) {
+        this.agd_fecha_fin = agd_fecha_fin;
+    }
+}
