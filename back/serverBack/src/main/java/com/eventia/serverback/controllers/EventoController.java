@@ -1,6 +1,8 @@
 package com.eventia.serverback.controllers;
 
+import com.eventia.serverback.models.Categoria;
 import com.eventia.serverback.models.Evento;
+import com.eventia.serverback.services.CategoriaService;
 import com.eventia.serverback.services.EventoService;
 import org.springframework.web.bind.annotation.*;
 
@@ -10,9 +12,11 @@ import java.util.ArrayList;
 @RequestMapping("/eventos")
 public class EventoController {
     private final EventoService eventoService;
+    private final CategoriaService categoriaService;
 
-    public EventoController(EventoService eventoService) {
+    public EventoController(EventoService eventoService, CategoriaService categoriaService) {
         this.eventoService = eventoService;
+        this.categoriaService = categoriaService;
     }
 
     @GetMapping
@@ -26,9 +30,11 @@ public class EventoController {
     }
 
     @PostMapping
-    public int agregarEvento(@RequestBody Evento evento) {
-        return eventoService.addEvento(evento);
+    public int agregarEvento(@RequestBody Evento evento, @RequestParam ArrayList<Categoria> categorias) {
+        int idEvento = eventoService.addEvento(evento);
+        categoriaService.handleCategorias(idEvento, categorias);
 
+        return idEvento;
     }
 
 

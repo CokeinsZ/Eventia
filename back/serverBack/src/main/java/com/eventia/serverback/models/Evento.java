@@ -1,13 +1,17 @@
 package com.eventia.serverback.models;
 
+import java.util.ArrayList;
+
 public class Evento {
     private int evt_id;
     private int evt_organizador;
     private String evt_nombre;
     private String evt_descripcion;
     private float evt_precio;
+    private ArrayList<Categoria> categorias;
 
     public Evento() {
+        this.categorias = new ArrayList<>();
     }
 
     public Evento(int evt_organizador, String evt_nombre, String evt_descripcion, float evt_precio) {
@@ -15,6 +19,7 @@ public class Evento {
         this.evt_nombre = evt_nombre;
         this.evt_descripcion = evt_descripcion;
         this.evt_precio = evt_precio;
+        this.categorias = new ArrayList<>();
     }
 
     public int getEvt_id() {
@@ -55,5 +60,13 @@ public class Evento {
 
     public void setEvt_precio(float evt_precio) {
         this.evt_precio = evt_precio;
+    }
+
+    public ArrayList<Categoria> getCategorias() {
+        return categorias;
+    }
+
+    public void setCategorias(ArrayList<Categoria> categorias) {
+        this.categorias = categorias;
     }
 }

@@ -1,5 +1,6 @@
 package com.eventia.serverback.repositories;
 
+import com.eventia.serverback.models.Categoria;
 import com.eventia.serverback.models.Evento;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
@@ -17,17 +18,36 @@ public class EventoRepository {
     }
 
     public ArrayList<Evento> getEventos() {
-        String sql = "SELECT * FROM eventos";
+        String sql = "SELECT e.*, c.cat_nombre FROM eventos as e " +
+                    "LEFT JOIN evento_categoria as ec ON e.evt_id = ec.evt_id " +
+                    "LEFT JOIN categorias as c ON ec.cat_id = c.cat_id " +
+                    "ORDER BY e.evt_id ASC";
         ArrayList<Evento> eventos = new ArrayList<>();
         try {
-            // Ejecutar la consulta
-            ResultSet resultSet = jdbcTemplate.getDataSource().getConnection().createStatement().executeQuery(sql);
+            ResultSet resultSet = jdbcTemplate.getDataSource().getConnection().createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE).executeQuery(sql);
 
+            resultSet.first();
+            int idAnterior = resultSet.getInt("evt_id");
+            Evento evento = construirEvento(resultSet);
+            Categoria categoria = new Categoria(resultSet.getString("cat_nombre"));
+            evento.getCategorias().add(categoria);
             while (resultSet.next()) {
-                Evento evento = construirEvento(resultSet);
-                eventos.add(evento);
-            }
+                int idActual = resultSet.getInt("evt_id");
+                if (idAnterior != idActual) {
+                    eventos.add(evento);    //Evento anterior
 
+                    evento = construirEvento(resultSet);    //Crea evento actual
+                    categoria = new Categoria(resultSet.getString("cat_nombre"));
+                    evento.getCategorias().add(categoria);
+                    idAnterior = idActual;
+
+                } else {
+                    //Si son el mismo evento, añade la categoría
+                    categoria = new Categoria(resultSet.getString("cat_nombre"));
+                    evento.getCategorias().add(categoria);
+                }
+            }
+            eventos.add(evento);    //Añade el último evento
             resultSet.close();
 
         } catch (SQLException e) {
@@ -82,7 +102,6 @@ public class EventoRepository {
 
             ResultSet resultSet = preparedStatement.getGeneratedKeys();
             if (resultSet.next()) {
-                System.out.println("Evento insertado con : " + resultSet);
                 id = resultSet.getInt(1);
             }
 
