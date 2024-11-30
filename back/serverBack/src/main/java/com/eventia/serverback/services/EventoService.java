@@ -18,5 +18,13 @@ public class EventoService {
         return eventoRepository.getEventos();
     }
 
+    public Evento getEventoById(int id) {
+        return eventoRepository.getEventoById(id);
+    }
+
+    public int addEvento(Evento evento) {
+        return eventoRepository.addEvento(evento);
+    }
+
 
 }

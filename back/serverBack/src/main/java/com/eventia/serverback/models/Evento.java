@@ -7,6 +7,15 @@ public class Evento {
     private String evt_descripcion;
     private float evt_precio;
 
+    public Evento() {
+    }
+
+    public Evento(int evt_organizador, String evt_nombre, String evt_descripcion, float evt_precio) {
+        this.evt_organizador = evt_organizador;
+        this.evt_nombre = evt_nombre;
+        this.evt_descripcion = evt_descripcion;
+        this.evt_precio = evt_precio;
+    }
 
     public int getEvt_id() {
         return evt_id;
