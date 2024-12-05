@@ -2,6 +2,7 @@ package com.eventia.serverback.controllers;
 
 import com.eventia.serverback.models.Categoria;
 import com.eventia.serverback.models.Evento;
+import com.eventia.serverback.models.Filtro;
 import com.eventia.serverback.services.CategoriaService;
 import com.eventia.serverback.services.EventoService;
 import org.springframework.web.bind.annotation.*;
@@ -30,11 +31,18 @@ public class EventoController {
     }
 
     @PostMapping
-    public int agregarEvento(@RequestBody Evento evento, @RequestParam ArrayList<Categoria> categorias) {
+    public int agregarEvento(@RequestBody Evento evento) {
         int idEvento = eventoService.addEvento(evento);
-        categoriaService.handleCategorias(idEvento, categorias);
+        categoriaService.handleCategorias(idEvento, evento.getCategorias());
 
         return idEvento;
+    }
+
+    @GetMapping("/filtrar")
+    public ArrayList<Evento> filtrarEventos(@RequestBody Filtro filtros) {
+        System.out.println(filtros.getNombre());
+
+        return eventoService.filtrarEventos(filtros);
     }
 
 

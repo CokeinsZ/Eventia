@@ -2,6 +2,7 @@ package com.eventia.serverback.repositories;
 
 import com.eventia.serverback.models.Categoria;
 import com.eventia.serverback.models.Evento;
+import com.eventia.serverback.models.Filtro;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
@@ -26,6 +27,19 @@ public class EventoRepository {
         try {
             ResultSet resultSet = jdbcTemplate.getDataSource().getConnection().createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE).executeQuery(sql);
 
+            eventos = asociarCategoriasEventos(resultSet);
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return eventos;
+    }
+
+    private ArrayList<Evento> asociarCategoriasEventos(ResultSet resultSet) {
+        ArrayList<Evento> eventos = new ArrayList<>();
+
+        try {
             resultSet.first();
             int idAnterior = resultSet.getInt("evt_id");
             Evento evento = construirEvento(resultSet);
@@ -47,6 +61,7 @@ public class EventoRepository {
                     evento.getCategorias().add(categoria);
                 }
             }
+
             eventos.add(evento);    //Añade el último evento
             resultSet.close();
 
@@ -112,5 +127,51 @@ public class EventoRepository {
         }
 
         return id;
+    }
+
+    public ArrayList<Evento> filtrarEventos(Filtro filtros) {
+        String sql = "SELECT e.*, c.cat_nombre FROM eventos as e " +
+                    "LEFT JOIN evento_categoria as ec ON e.evt_id = ec.evt_id " +
+                    "LEFT JOIN categorias as c ON ec.cat_id = c.cat_id " +
+                    "WHERE 1 = 1";
+
+        ArrayList<String> parametros = new ArrayList<>();
+
+        if (filtros.getNombre() != null) {
+            sql += " AND e.evt_nombre LIKE ?";
+            parametros.add("%" + filtros.getNombre() + "%");
+        }
+
+        if (filtros.getCategorias() != null) {
+            sql += " AND c.cat_nombre IN (";
+            for (Categoria categoria : filtros.getCategorias()) {
+                sql += "?, ";
+                parametros.add(categoria.getCat_nombre());
+            }
+            sql += ")";
+        }
+
+        if (filtros.getUbicacion() != null) {
+            sql += " AND e.evt_ubicacion = ?";
+            parametros.add(filtros.getUbicacion().getUbc_nombre());
+        }
+
+        ArrayList<Evento> eventos = new ArrayList<>();
+        try {
+            PreparedStatement preparedStatement = jdbcTemplate.getDataSource().getConnection().prepareStatement(sql, ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE);
+
+            for (int i = 0; i < parametros.size(); i++) {
+                preparedStatement.setString(i+1, parametros.get(i));
+            }
+
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            eventos = asociarCategoriasEventos(resultSet);
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return eventos;
     }
 }
