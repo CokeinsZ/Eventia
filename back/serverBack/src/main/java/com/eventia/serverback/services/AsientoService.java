@@ -26,6 +26,10 @@ public class AsientoService {
         return asientoRepository.addAsiento(asiento);
     }
 
+    public String addAsientosDefault(int ubc_id, int cantidad) {
+        return asientoRepository.addAsientosDefault(ubc_id, cantidad);
+    }
+
     public String updateAsiento(Asiento asiento) {
         return asientoRepository.updateAsiento(asiento);
     }

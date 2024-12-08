@@ -121,4 +121,32 @@ public class AsientoRepository {
             return "Error al eliminar asiento. \n\t + " + e.getMessage();
         }
     }
+
+    public String addAsientosDefault(int ubc_id, int cantidad) {
+        String sql = "INSERT INTO asientos (ast_id, ubc_id, ast_estado) VALUES (?, ?, ?)";
+        String estado = "libre";
+
+        try {
+            PreparedStatement preparedStatement = jdbcTemplate.getDataSource().getConnection().prepareStatement(sql);
+
+            for (int i = 0; i < cantidad; i++) {
+                preparedStatement.setString(1, "A" + i);
+                preparedStatement.setInt(2, ubc_id);
+                preparedStatement.setString(3, estado);
+                preparedStatement.executeUpdate();
+            }
+
+            return "Asientos agregados correctamente";
+
+        } catch (SQLIntegrityConstraintViolationException e) {
+            return "Error: El ast_id ya existe";
+
+        } catch (SQLException e) {
+            return "Error: Estado inválido u otro error de SQL";
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            return "Error al agregar asientos";
+        }
+    }
 }

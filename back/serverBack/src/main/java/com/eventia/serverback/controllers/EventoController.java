@@ -46,10 +46,32 @@ public class EventoController {
         return eventoService.filtrarEventos(filtros);
     }
 
-    @PostMapping("/{id}/agenda")
+    // Enpoints para Agendas
+
+    @GetMapping("/{id}/agendas")
+    public ArrayList<Agenda> listarAgendas(@PathVariable int id) {
+        return agendaService.getAgendas(id);
+    }
+
+    @GetMapping("/{id}/agendas/{idAgenda}")
+    public Agenda obtenerAgendaPorId(@PathVariable int id, @PathVariable int idAgenda) {
+        return agendaService.getAgendaById(id, idAgenda);
+    }
+
+    @PostMapping("/{id}/agendas")
     public String agregarAgenda(@PathVariable int id, @RequestBody Agenda agenda) {
         return agendaService.addAgenda(id, agenda);
     }
 
+    @PutMapping("/{id}/agendas")
+    public String actualizarAgenda(@PathVariable int id, @RequestBody Agenda agenda) {
+        return agendaService.updateAgenda(id, agenda);
+    }
 
+    @DeleteMapping("/{id}/agendas/{idAgenda}")
+    public String eliminarAgenda(@PathVariable int id, @PathVariable int idAgenda) {
+        return agendaService.deleteAgenda(id, idAgenda);
+    }
+
+    
 }

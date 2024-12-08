@@ -50,6 +50,7 @@ public class UbicacionController {
     }
 
     // Endpoints para Asientos
+
     @GetMapping("/asientos/{id}")
     public ArrayList<Asiento> getAsientosByUbc(@PathVariable int id) {
         return asientoService.getAsientosByUbc(id);
