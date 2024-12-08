@@ -3,10 +3,9 @@ package com.eventia.serverback.controllers;
 import com.eventia.serverback.models.LoginResponse;
 import com.eventia.serverback.models.Usuario;
 import com.eventia.serverback.services.UsuarioService;
+import io.jsonwebtoken.Claims;
 import org.springframework.web.bind.annotation.*;
-
-import java.sql.Timestamp;
-import java.time.LocalDateTime;
+import org.json.JSONObject;
 
 @RestController
 @RequestMapping("/usuarios")
@@ -35,6 +34,13 @@ public class UsuarioController {
     @PostMapping("/login")
     public LoginResponse loginUsuario(@RequestBody Usuario usuario) {
         return this.usuarioService.loginUsuario(usuario);
+    }
+
+    @PostMapping("/validate")
+    public Claims validateToken(@RequestBody String tokenJson) {
+        JSONObject jsonObject = new JSONObject(tokenJson);
+        String token = jsonObject.getString("token");
+        return this.usuarioService.validateToken(token);
     }
 
     @PutMapping("/{id}/info")

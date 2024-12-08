@@ -3,8 +3,10 @@ package com.eventia.serverback.repositories;
 import com.eventia.serverback.models.LoginResponse;
 import com.eventia.serverback.models.Usuario;
 import com.eventia.serverback.services.WebTokenProvider;
+import io.jsonwebtoken.Claims;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 
 import java.sql.PreparedStatement;
@@ -12,16 +14,16 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 @Repository
+@Component
 public class UsuarioRepository {
     private final JdbcTemplate jdbcTemplate;
     private final BCryptPasswordEncoder passwordEncoder;
     private final WebTokenProvider webTokenProvider;
 
-    public UsuarioRepository(JdbcTemplate jdbcTemplate) {
+    public UsuarioRepository(JdbcTemplate jdbcTemplate, WebTokenProvider webTokenProvider) {
         this.jdbcTemplate = jdbcTemplate;
-
         this.passwordEncoder = new BCryptPasswordEncoder();
-        this.webTokenProvider = new WebTokenProvider();
+        this.webTokenProvider = webTokenProvider;
     }
 
     public Usuario getUsuario(int id) {
@@ -183,6 +185,10 @@ public class UsuarioRepository {
         loginResponse.setUsr_id(-1);
         loginResponse.setResponse("Error al iniciar sesión.");
         return loginResponse;
+    }
+
+    public Claims validateToken(String token) {
+        return webTokenProvider.validateToken(token);
     }
 
     private Boolean validarContrasena(String contrasenaIngresada, String contrasenaEncriptada) {

@@ -1,22 +1,26 @@
 package com.eventia.serverback.services;
 
+import com.eventia.serverback.config.JwtConfig;
+import io.jsonwebtoken.Claims;
+import io.jsonwebtoken.ExpiredJwtException;
+import io.jsonwebtoken.JwtException;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.security.Keys;
 import jakarta.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
 
 import java.security.Key;
 import java.util.Date;
 
+@Component
 public class WebTokenProvider {
-    @Value("${jwtSecret}")
-    private String jwtSecret = "@zL9C<p+_lR49JlCSz}'30(E0>4w&8$6<4E-PHo0$E<<#XWg'{";
+    private final Key key;
+    private final long validityInMilliseconds;
 
-    private Key key;
-    private final long validityInMilliseconds = 3600000; // 1 hora
-
-    public WebTokenProvider() {
-        this.key = Keys.hmacShaKeyFor(jwtSecret.getBytes());
+    public WebTokenProvider(JwtConfig jwtConfig) {
+        this.key = jwtConfig.jwtSigningKey();
+        this.validityInMilliseconds = jwtConfig.getValidityInMilliseconds();
     }
 
     public String createToken(String correo, int userId, String role) {
@@ -32,5 +36,18 @@ public class WebTokenProvider {
                 .signWith(key)
                 .compact();
     }
+
+    public Claims validateToken(String token) {
+        try {
+            return Jwts.parserBuilder().setSigningKey(key).build().parseClaimsJws(token).getBody();
+
+        } catch (ExpiredJwtException e) {
+            throw new RuntimeException("Token expirado", e);
+
+        } catch (JwtException e) {
+            throw new RuntimeException("Token inválido", e);
+        }
+    }
+
 
 }

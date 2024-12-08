@@ -3,6 +3,7 @@ package com.eventia.serverback.services;
 import com.eventia.serverback.models.LoginResponse;
 import com.eventia.serverback.models.Usuario;
 import com.eventia.serverback.repositories.UsuarioRepository;
+import io.jsonwebtoken.Claims;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -27,6 +28,10 @@ public class UsuarioService {
 
     public LoginResponse loginUsuario(Usuario usuario) {
         return this.usuarioRepository.loginUsuario(usuario);
+    }
+
+    public Claims validateToken(String token) {
+        return this.usuarioRepository.validateToken(token);
     }
 
     public String updatePersonalInfo(int id, Usuario usuario) {
