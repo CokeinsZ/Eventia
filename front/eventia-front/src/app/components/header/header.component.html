@@ -1,0 +1,69 @@
+<!-- Barra de Navegación -->
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+  <div class="container-fluid">
+    <!-- Evento para redirigir a "home" -->
+    <a class="navbar-brand" href="home">Eventia</a>
+    <!-- Alinear elementos al lado derecho -->
+    <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+      <ul class="navbar-nav mb-2 mb-lg-0">
+        <li class="nav-item">
+          <!-- Evento para redirigir a "cartera" -->
+          <a class="nav-link active" aria-current="page" href="cartera">
+            <button class="btn btn-warning">Cartera</button>
+          </a>
+        </li>
+        <li class="nav-item">
+          <!-- Evento para redirigir a "login" -->
+          <a class="nav-link" href="login">
+            <button class="btn btn-warning">Login</button>
+          </a>
+        </li>
+        <li class="nav-item dropdown">
+          <!-- Evento para redirigir a "registro" -->
+          <a class="nav-link" href="register">
+            <button class="btn btn-warning">Sign up</button>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- Barra de búsqueda abajo -->
+<div class="container-fluid">
+  <form class="d-flex" role="search">
+    <div class="container2 d-flex col">
+      <input class="form-control me-2 w-50" type="search" placeholder="Search" aria-label="Search">
+    <button class="btn btn-success" type="submit">Search</button>
+    </div>
+    <div class="container d-flex col">
+      <div class="container-filters c">
+        <select class="form-select" aria-label="Default select example">
+          <option selected>Ciudad</option>
+          <option value="1">One</option>
+          <option value="2">Two</option>
+          <option value="3">Three</option>
+        </select>
+      </div>
+      <div class="container-filters">
+        <select class="form-select" aria-label="Default select example">
+          <option selected>Fecha</option>
+          <option value="1">One</option>
+          <option value="2">Two</option>
+          <option value="3">Three</option>
+        </select>
+      </div>
+      <div class="container-filters">
+        <select class="form-select" aria-label="Default select example">
+          <option selected>Categoria</option>
+          <option value="1">One</option>
+          <option value="2">Two</option>
+          <option value="3">Three</option>
+        </select>
+      </div>
+    </div>
+  </form>
+</div>
+
+<!-- Acordeón -->
+<app-acordeon></app-acordeon>

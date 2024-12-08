@@ -1,0 +1,10 @@
+.accordion-button{
+    background: linear-gradient(to right, rgb(24, 66, 181),rgb(152, 9, 163));
+}
+.btn-acordion-options{
+    display: flex;
+    flex-direction: column;
+}
+.btn{
+    width: 45%;
+}
