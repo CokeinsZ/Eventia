@@ -5,6 +5,19 @@ public class Asiento {
     private int ubc_id;
     private String ast_estado;
 
+    public Asiento() {
+    }
+
+    public Asiento(String ast_estado) {
+        this.ast_estado = ast_estado;
+    }
+
+    public Asiento(String ast_id, int ubc_id, String ast_estado) {
+        this.ast_id = ast_id;
+        this.ubc_id = ubc_id;
+        this.ast_estado = ast_estado;
+    }
+
     public String getAst_id() {
         return ast_id;
     }
