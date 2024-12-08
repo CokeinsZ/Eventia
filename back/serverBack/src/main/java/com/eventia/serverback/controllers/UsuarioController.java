@@ -5,6 +5,9 @@ import com.eventia.serverback.models.Usuario;
 import com.eventia.serverback.services.UsuarioService;
 import org.springframework.web.bind.annotation.*;
 
+import java.sql.Timestamp;
+import java.time.LocalDateTime;
+
 @RestController
 @RequestMapping("/usuarios")
 public class UsuarioController {
@@ -19,7 +22,7 @@ public class UsuarioController {
         return this.usuarioService.getUsuario(id);
     }
 
-    @GetMapping("/{correo}")
+    @GetMapping("/{correo}/correo")
     public Usuario getUsuarios(@PathVariable String correo) {
         return this.usuarioService.getUsuario(correo);
     }
@@ -50,8 +53,13 @@ public class UsuarioController {
     }
 
     @PatchMapping("/{id}/delete")
-    public String deleteUsuario(@PathVariable int id, @RequestBody String estado) {
-        return this.usuarioService.deleteUsuario(id, estado);
+    public String deleteUsuario(@PathVariable int id, @RequestBody Usuario usuario) {
+        return this.usuarioService.deleteUsuario(id, usuario.getUsr_estado());
+    }
+
+    @GetMapping("/saldo")
+    public float getSaldo(@RequestParam int id) {
+        return this.usuarioService.getSaldo(id);
     }
 
 

@@ -44,4 +44,8 @@ public class UsuarioService {
     public String deleteUsuario(int id, String estado) {
         return this.usuarioRepository.deleteUsuario(id, estado);
     }
+
+    public float getSaldo(int id) {
+        return this.usuarioRepository.getSaldo(id);
+    }
 }

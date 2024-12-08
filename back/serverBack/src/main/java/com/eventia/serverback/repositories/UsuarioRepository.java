@@ -277,13 +277,36 @@ public class UsuarioRepository {
             int affectedRows = preparedStatement.executeUpdate();
 
             if (affectedRows > 0) {
-                return "Usuario eliminado.";
+                return "Estado del usuario actualizado.";
             }
 
         } catch (SQLException e) {
             e.printStackTrace();
         }
 
-        return "Error al eliminar el usuario.";
+        return "Error al modificar el estado del usuario.";
+    }
+
+    public float getSaldo(int id) {
+        String sql = "SELECT usr_saldo FROM usuarios WHERE usr_id = ?";
+        float saldo = 0;
+
+        try {
+            PreparedStatement preparedStatement = jdbcTemplate.getDataSource().getConnection().prepareStatement(sql);
+            preparedStatement.setInt(1, id);
+
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            if (resultSet.next()) {
+                saldo = resultSet.getFloat("usr_saldo");
+            }
+
+            return saldo;
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return -1;
     }
 }

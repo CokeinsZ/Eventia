@@ -18,6 +18,10 @@ public class Usuario {
     public Usuario() {
     }
 
+    public Usuario(String usr_estado) {
+        this.usr_estado = usr_estado;
+    }
+
     public Usuario(String usr_correo, String usr_contrasena) {
         this.usr_correo = usr_correo;
         this.usr_contrasena = usr_contrasena;
