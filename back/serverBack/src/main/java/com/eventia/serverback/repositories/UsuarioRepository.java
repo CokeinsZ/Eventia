@@ -142,9 +142,9 @@ public class UsuarioRepository {
         String contrasenaIngresada = usuario.getUsr_contrasena();
         String contrasenaEncriptada = "";
 
-        LoginResponse loginResponse = new LoginResponse(-1, null, null);
+        LoginResponse loginResponse = new LoginResponse();
 
-        String sql = "SELECT u.usr_contrasena, r.rol_nombre FROM usuarios u " +
+        String sql = "SELECT u.usr_contrasena, u.usr_estado, r.rol_nombre FROM usuarios u " +
                 "INNER JOIN roles r ON u.usr_rol = r.rol_id " +
                 "WHERE usr_id = ?";
 
@@ -157,22 +157,134 @@ public class UsuarioRepository {
             if (resultSet.next()) {
                 contrasenaEncriptada = resultSet.getString("usr_contrasena");
                 String rol = resultSet.getString("rol_nombre");
+                String estado = resultSet.getString("usr_estado");
 
-                if (validarContrasena(contrasenaIngresada, contrasenaEncriptada)) {
-                    String token = webTokenProvider.createToken(usuario.getUsr_correo(), usr_id, rol);
-
-                    return new LoginResponse(usr_id, rol, token);
+                if (!estado.equalsIgnoreCase("activo")) {
+                    loginResponse.setUsr_id(-1);
+                    loginResponse.setResponse("Usuario inactivo o suspendido \nContacte servicio al cliente si cree que se trata de un error.");
+                    return loginResponse;
                 }
+
+                if (!validarContrasena(contrasenaIngresada, contrasenaEncriptada)) {
+                    loginResponse.setUsr_id(-1);
+                    loginResponse.setResponse("Contraseña incorrecta.");
+                    return loginResponse;
+                }
+
+                String token = webTokenProvider.createToken(usuario.getUsr_correo(), usr_id, rol);
+
+                return new LoginResponse(usr_id, rol, token, "Login exitoso.");
             }
 
         } catch (SQLException e) {
             e.printStackTrace();
         }
 
+        loginResponse.setUsr_id(-1);
+        loginResponse.setResponse("Error al iniciar sesión.");
         return loginResponse;
     }
 
     private Boolean validarContrasena(String contrasenaIngresada, String contrasenaEncriptada) {
         return passwordEncoder.matches(contrasenaIngresada, contrasenaEncriptada);
+    }
+
+    public String updatePersonalInfo(int id, Usuario usuario) {
+        String sql = "UPDATE usuarios SET usr_correo = ?, usr_nombre1 = ?, usr_nombre2 = ?, usr_apellido1 = ?, usr_apellido2 = ?, usr_telefono = ?, usr_cedula = ?, usr_estado = ? WHERE usr_id = ?";
+
+        try {
+            PreparedStatement preparedStatement = jdbcTemplate.getDataSource().getConnection().prepareStatement(sql);
+            preparedStatement.setString(1, usuario.getUsr_correo());
+            preparedStatement.setString(2, usuario.getUsr_nombre1());
+            preparedStatement.setString(3, usuario.getUsr_nombre2());
+            preparedStatement.setString(4, usuario.getUsr_apellido1());
+            preparedStatement.setString(5, usuario.getUsr_apellido2());
+            preparedStatement.setString(6, usuario.getUsr_telefono());
+            preparedStatement.setString(7, usuario.getUsr_cedula());
+            preparedStatement.setString(8, usuario.getUsr_estado());
+            preparedStatement.setInt(9, id);
+
+            int affectedRows = preparedStatement.executeUpdate();
+
+            if (affectedRows > 0) {
+                return "Usuario actualizado.";
+            }
+
+        } catch (SQLException e) {
+            if (e.getMessage().contains("usr_correo")) {
+                return "El correo ya está registrado.";
+            } else if (e.getMessage().contains("usr_cedula")) {
+                return "La cédula ya está registrada.";
+            } else {
+                e.printStackTrace();
+                return "Error al actualizar el usuario.";
+            }
+        }
+        return "Error desconocido.";
+    }
+
+    public String updatePassword(int id, Usuario usuario) {
+        String sql = "UPDATE usuarios SET usr_contrasena = ? WHERE usr_id = ?";
+
+        String contrasenaEncriptada = passwordEncoder.encode(usuario.getUsr_contrasena());
+
+        try {
+            PreparedStatement preparedStatement = jdbcTemplate.getDataSource().getConnection().prepareStatement(sql);
+            preparedStatement.setString(1, contrasenaEncriptada);
+            preparedStatement.setInt(2, id);
+
+            int affectedRows = preparedStatement.executeUpdate();
+
+            if (affectedRows > 0) {
+                return "Contraseña actualizada.";
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return "Error al actualizar la contraseña.";
+    }
+
+    public String updateRol(int id, Usuario usuario) {
+        String sql = "UPDATE usuarios SET usr_rol = (SELECT rol_id FROM roles WHERE rol_nombre LIKE ?) WHERE usr_id = ?";
+
+        try {
+            PreparedStatement preparedStatement = jdbcTemplate.getDataSource().getConnection().prepareStatement(sql);
+            preparedStatement.setString(1, usuario.getRol_nombre());
+            preparedStatement.setInt(2, id);
+
+            int affectedRows = preparedStatement.executeUpdate();
+
+            if (affectedRows > 0) {
+                return "Rol actualizado.";
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return "Error al actualizar el rol.";
+    }
+
+    public String deleteUsuario(int id, String estado) {
+        String sql = "UPDATE usuarios SET usr_estado = ? WHERE usr_id = ?";
+
+        try {
+            PreparedStatement preparedStatement = jdbcTemplate.getDataSource().getConnection().prepareStatement(sql);
+            preparedStatement.setString(1, estado);
+            preparedStatement.setInt(2, id);
+
+            int affectedRows = preparedStatement.executeUpdate();
+
+            if (affectedRows > 0) {
+                return "Usuario eliminado.";
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return "Error al eliminar el usuario.";
     }
 }

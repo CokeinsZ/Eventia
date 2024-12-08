@@ -34,7 +34,25 @@ public class UsuarioController {
         return this.usuarioService.loginUsuario(usuario);
     }
 
+    @PutMapping("/{id}/info")
+    public String updatePersonalInfo(@PathVariable int id, @RequestBody Usuario usuario) {
+        return this.usuarioService.updatePersonalInfo(id, usuario);
+    }
 
+    @PatchMapping("/{id}/password")
+    public String updatePassword(@PathVariable int id, @RequestBody Usuario usuario) {
+        return this.usuarioService.updatePassword(id, usuario);
+    }
+
+    @PatchMapping("/{id}/rol")
+    public String updateRol(@PathVariable int id, @RequestBody Usuario usuario) {
+        return this.usuarioService.updateRol(id, usuario);
+    }
+
+    @PatchMapping("/{id}/delete")
+    public String deleteUsuario(@PathVariable int id, @RequestBody String estado) {
+        return this.usuarioService.deleteUsuario(id, estado);
+    }
 
 
 }

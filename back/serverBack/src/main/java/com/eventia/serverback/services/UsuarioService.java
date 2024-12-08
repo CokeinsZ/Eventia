@@ -28,4 +28,20 @@ public class UsuarioService {
     public LoginResponse loginUsuario(Usuario usuario) {
         return this.usuarioRepository.loginUsuario(usuario);
     }
+
+    public String updatePersonalInfo(int id, Usuario usuario) {
+        return this.usuarioRepository.updatePersonalInfo(id, usuario);
+    }
+
+    public String updatePassword(int id, Usuario usuario) {
+        return this.usuarioRepository.updatePassword(id, usuario);
+    }
+
+    public String updateRol(int id, Usuario usuario) {
+        return this.usuarioRepository.updateRol(id, usuario);
+    }
+
+    public String deleteUsuario(int id, String estado) {
+        return this.usuarioRepository.deleteUsuario(id, estado);
+    }
 }
