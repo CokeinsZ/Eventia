@@ -2,7 +2,7 @@ package com.eventia.serverback.repositories;
 
 import com.eventia.serverback.models.Categoria;
 import com.eventia.serverback.models.Evento;
-import com.eventia.serverback.models.Filtro;
+import com.eventia.serverback.models.FiltroEvento;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
@@ -129,7 +129,7 @@ public class EventoRepository {
         return id;
     }
 
-    public ArrayList<Evento> filtrarEventos(Filtro filtros) {
+    public ArrayList<Evento> filtrarEventos(FiltroEvento filtros) {
         String sql = "SELECT e.*, c.cat_nombre FROM eventos as e " +
                     "LEFT JOIN evento_categoria as ec ON e.evt_id = ec.evt_id " +
                     "LEFT JOIN categorias as c ON ec.cat_id = c.cat_id " +

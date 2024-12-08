@@ -3,16 +3,16 @@ package com.eventia.serverback.models;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 
-public class Filtro {
+public class FiltroEvento {
     private String nombre;
     private ArrayList<Categoria> categorias;
     private Ubicacion ubicacion;
     private LocalDateTime fecha;
 
-    public Filtro() {
+    public FiltroEvento() {
     }
 
-    public Filtro(String nombre, ArrayList<Categoria> categorias, Ubicacion ubicacion, LocalDateTime fecha) {
+    public FiltroEvento(String nombre, ArrayList<Categoria> categorias, Ubicacion ubicacion, LocalDateTime fecha) {
         this.nombre = nombre;
         this.categorias = categorias;
         this.ubicacion = ubicacion;
