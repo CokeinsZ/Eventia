@@ -129,4 +129,32 @@ public class UbicacionRepository {
 
         return "Error al eliminar ubicación";
     }
+
+    public ArrayList<Ubicacion> filtrarCiudad(String ciudad) {
+        String sql = "SELECT * FROM ubicacion WHERE ubc_ciudad LIKE ?";
+        String ciudadLike = "%" + ciudad + "%";
+        ArrayList<Ubicacion> ubicaciones = new ArrayList<>();
+
+        try {
+            PreparedStatement preparedStatement = jdbcTemplate.getDataSource().getConnection().prepareStatement(sql);
+            preparedStatement.setString(1, ciudadLike);
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            while (resultSet.next()) {
+                Ubicacion ubicacion = new Ubicacion(
+                        resultSet.getInt("ubc_id"),
+                        resultSet.getString("ubc_nombre"),
+                        resultSet.getString("ubc_ciudad"),
+                        resultSet.getString("ubc_direccion"),
+                        resultSet.getInt("ubc_capacidad")
+                );
+                ubicaciones.add(ubicacion);
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return ubicaciones;
+    }
 }

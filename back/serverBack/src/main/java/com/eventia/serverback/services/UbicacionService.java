@@ -22,6 +22,11 @@ public class UbicacionService {
         return ubicacionRepository.getUbicacionById(id);
     }
 
+    public ArrayList<Ubicacion> filtrarCiudad(String ciudad) {
+        return ubicacionRepository.filtrarCiudad(ciudad);
+
+    }
+
     public String addUbicacion(Ubicacion ubicacion) {
         return ubicacionRepository.addUbicacion(ubicacion);
     }

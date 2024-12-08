@@ -25,6 +25,11 @@ public class UbicacionController {
         return ubicacionService.getUbicacionById(id);
     }
 
+    @GetMapping("/filtrar")
+    public ArrayList<Ubicacion> filtrarCiudad(@RequestParam Ubicacion ubicacion) {
+        return ubicacionService.filtrarCiudad(ubicacion.getUbc_ciudad());
+    }
+
     @PostMapping("/")
     public String addUbicacion(@RequestBody Ubicacion ubicacion) {
         return ubicacionService.addUbicacion(ubicacion);

@@ -1,9 +1,8 @@
 package com.eventia.serverback.controllers;
 
 import com.eventia.serverback.models.Agenda;
-import com.eventia.serverback.models.Categoria;
 import com.eventia.serverback.models.Evento;
-import com.eventia.serverback.models.Filtro;
+import com.eventia.serverback.models.FiltroEvento;
 import com.eventia.serverback.services.AgendaService;
 import com.eventia.serverback.services.CategoriaService;
 import com.eventia.serverback.services.EventoService;
@@ -43,13 +42,13 @@ public class EventoController {
     }
 
     @GetMapping("/filtrar")
-    public ArrayList<Evento> filtrarEventos(@RequestBody Filtro filtros) {
+    public ArrayList<Evento> filtrarEventos(@RequestBody FiltroEvento filtros) {
         return eventoService.filtrarEventos(filtros);
     }
 
     @PostMapping("/{id}/agenda")
-    public void agregarAgenda(@PathVariable int id, @RequestBody Agenda agenda) {
-        agendaService.addAgenda(id, agenda);
+    public String agregarAgenda(@PathVariable int id, @RequestBody Agenda agenda) {
+        return agendaService.addAgenda(id, agenda);
     }
 
 

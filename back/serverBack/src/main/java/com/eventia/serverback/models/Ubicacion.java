@@ -10,6 +10,10 @@ public class Ubicacion {
     public Ubicacion() {
     }
 
+    public Ubicacion(String ubc_ciudad) {
+        this.ubc_ciudad = ubc_ciudad;
+    }
+
     public Ubicacion(int ubc_id, String ubc_nombre, String ubc_ciudad, String ubc_direccion, int ubc_capacidad) {
         this.ubc_id = ubc_id;
         this.ubc_nombre = ubc_nombre;

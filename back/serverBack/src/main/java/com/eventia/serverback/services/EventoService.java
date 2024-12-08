@@ -1,7 +1,7 @@
 package com.eventia.serverback.services;
 
 import com.eventia.serverback.models.Evento;
-import com.eventia.serverback.models.Filtro;
+import com.eventia.serverback.models.FiltroEvento;
 import com.eventia.serverback.repositories.EventoRepository;
 import org.springframework.stereotype.Service;
 
@@ -27,7 +27,7 @@ public class EventoService {
         return eventoRepository.addEvento(evento);
     }
 
-    public ArrayList<Evento> filtrarEventos(Filtro filtros) {
+    public ArrayList<Evento> filtrarEventos(FiltroEvento filtros) {
         return eventoRepository.filtrarEventos(filtros);
     }
 }
