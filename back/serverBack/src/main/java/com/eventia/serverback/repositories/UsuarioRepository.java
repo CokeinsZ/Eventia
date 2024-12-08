@@ -190,7 +190,7 @@ public class UsuarioRepository {
     }
 
     public String updatePersonalInfo(int id, Usuario usuario) {
-        String sql = "UPDATE usuarios SET usr_correo = ?, usr_nombre1 = ?, usr_nombre2 = ?, usr_apellido1 = ?, usr_apellido2 = ?, usr_telefono = ?, usr_cedula = ?, usr_estado = ? WHERE usr_id = ?";
+        String sql = "UPDATE usuarios SET usr_correo = ?, usr_nombre1 = ?, usr_nombre2 = ?, usr_apellido1 = ?, usr_apellido2 = ?, usr_telefono = ?, usr_cedula = ? WHERE usr_id = ?";
 
         try {
             PreparedStatement preparedStatement = jdbcTemplate.getDataSource().getConnection().prepareStatement(sql);
@@ -201,8 +201,7 @@ public class UsuarioRepository {
             preparedStatement.setString(5, usuario.getUsr_apellido2());
             preparedStatement.setString(6, usuario.getUsr_telefono());
             preparedStatement.setString(7, usuario.getUsr_cedula());
-            preparedStatement.setString(8, usuario.getUsr_estado());
-            preparedStatement.setInt(9, id);
+            preparedStatement.setInt(8, id);
 
             int affectedRows = preparedStatement.executeUpdate();
 
