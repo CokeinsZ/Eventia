@@ -27,7 +27,6 @@ public class EventoController {
     @GetMapping("/pagina")
     public ArrayList<Evento> listarEventos(@RequestParam int pagina) {
         return eventoService.getEventos(pagina);
-        //Falta el promedio de calificaciones
     }
 
     @GetMapping("/categorias")
@@ -76,6 +75,11 @@ public class EventoController {
     @GetMapping("/{id}/agendas/{idAgenda}")
     public Agenda obtenerAgendaPorId(@PathVariable int id, @PathVariable int idAgenda) {
         return agendaService.getAgendaById(id, idAgenda);
+    }
+
+    @GetMapping("/{id}/agendas/asientos/{idAgenda}")
+    public ArrayList<AgendaAsientos> obtenerAsientosPorAgenda(@PathVariable int idAgenda) {
+        return agendaService.getAsientosByAgenda(idAgenda);
     }
 
     @PostMapping("/{id}/agendas")

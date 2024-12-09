@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Timestamp;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 
 @Repository
@@ -81,27 +82,29 @@ public class AgendaRepository {
         return agenda;
     }
 
-    public String addAgenda(int idEvento, Agenda agenda) {
+    public int addAgenda(int idEvento, Agenda agenda) {
         String sql = "INSERT INTO agendas (ubc_id, evt_id, agd_fecha_inicio, agd_fecha_fin) VALUES (?, ?, ?, ?)";
 
         try {
-            PreparedStatement preparedStatement = jdbcTemplate.getDataSource().getConnection().prepareStatement(sql);
+            PreparedStatement preparedStatement = jdbcTemplate.getDataSource().getConnection().prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS);
             preparedStatement.setInt(1, agenda.getUbc_id());
             preparedStatement.setInt(2, idEvento);
             preparedStatement.setTimestamp(3, Timestamp.valueOf(agenda.getAgd_fecha_inicio()));
             preparedStatement.setTimestamp(4, Timestamp.valueOf(agenda.getAgd_fecha_fin()));
-            preparedStatement.executeUpdate();
 
             int affectedRows = preparedStatement.executeUpdate();
             if (affectedRows > 0) {
-                return "Agenda creada correctamente";
+                ResultSet resultSet = preparedStatement.getGeneratedKeys();
+                if (resultSet.next()) {
+                    return resultSet.getInt(1);
+                }
             }
 
         } catch (Exception e) {
             e.printStackTrace();
         }
 
-        return "Error al crear la agenda";
+        return -1;
     }
 
     public String updateAgenda(int idEvento, Agenda agenda) {
@@ -166,5 +169,27 @@ public class AgendaRepository {
         }
 
         return "Error al eliminar las agendas";
+    }
+
+    public boolean isFechaOcupada(int ubcId, LocalDateTime agdFechaInicio, LocalDateTime agdFechaFin) {
+        String sql = "SELECT * FROM agendas WHERE ubc_id = ? AND " +
+                "((agd_fecha_inicio BETWEEN ? AND ?) OR (agd_fecha_fin BETWEEN ? AND ?))";
+
+        try {
+            PreparedStatement preparedStatement = jdbcTemplate.getDataSource().getConnection().prepareStatement(sql);
+            preparedStatement.setInt(1, ubcId);
+            preparedStatement.setTimestamp(2, Timestamp.valueOf(agdFechaInicio));
+            preparedStatement.setTimestamp(3, Timestamp.valueOf(agdFechaFin));
+            preparedStatement.setTimestamp(4, Timestamp.valueOf(agdFechaInicio));
+            preparedStatement.setTimestamp(5, Timestamp.valueOf(agdFechaFin));
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            return resultSet.next();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return true;
     }
 }

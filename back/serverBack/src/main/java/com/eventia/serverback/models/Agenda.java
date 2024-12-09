@@ -1,5 +1,7 @@
 package com.eventia.serverback.models;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import java.time.LocalDateTime;
 
 public class Agenda {
@@ -9,7 +11,10 @@ public class Agenda {
     private String ubc_ciudad;
     private int evt_id;
     private int entradas_disponibles;
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private LocalDateTime agd_fecha_inicio;
+
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private LocalDateTime agd_fecha_fin;
 
     public Agenda() {
