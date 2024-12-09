@@ -15,8 +15,8 @@ public class EventoService {
         this.eventoRepository = eventoRepository;
     }
 
-    public ArrayList<Evento> getEventos() {
-        return eventoRepository.getEventos();
+    public ArrayList<Evento> getEventos(int pagina) {
+        return eventoRepository.getEventos(pagina);
     }
 
     public Evento getEventoById(int id) {
@@ -29,5 +29,13 @@ public class EventoService {
 
     public ArrayList<Evento> filtrarEventos(FiltroEvento filtros) {
         return eventoRepository.filtrarEventos(filtros);
+    }
+
+    public String updateEvento(int id, Evento evento) {
+        return eventoRepository.updateEvento(id, evento);
+    }
+
+    public String deleteEvento(int id) {
+        return eventoRepository.deleteEvento(id);
     }
 }

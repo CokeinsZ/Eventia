@@ -4,6 +4,7 @@ import com.eventia.serverback.models.Categoria;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 import java.sql.*;
+import java.util.ArrayList;
 
 @Repository
 public class CategoriaRepository {
@@ -67,5 +68,47 @@ public class CategoriaRepository {
         }
 
         return catId;
+    }
+
+    public ArrayList<Categoria> getCategorias() {
+        String sql = "SELECT * FROM categorias";
+        ArrayList<Categoria> categorias = new ArrayList<>();
+        try {
+            PreparedStatement preparedStatement = jdbcTemplate.getDataSource().getConnection().prepareStatement(sql);
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            while (resultSet.next()) {
+                Categoria categoria = new Categoria();
+                categoria.setCat_nombre(resultSet.getString("cat_nombre"));
+                categorias.add(categoria);
+            }
+
+            resultSet.close();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return categorias;
+    }
+
+    public String deleteEventoCategoria(int idEvento) {
+        String sql = "DELETE FROM evento_categoria WHERE evt_id = ?";
+        try {
+            PreparedStatement preparedStatement = jdbcTemplate.getDataSource().getConnection().prepareStatement(sql);
+            preparedStatement.setInt(1, idEvento);
+            int affectedRows = preparedStatement.executeUpdate();
+
+            if (affectedRows > 0) {
+                return "Asociaciones Evento-Categoria eliminadas";
+            }
+
+            return "No se encontraron asociaciones Evento-Categoria para eliminar";
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return "Error al eliminar asociaciones Evento-Categoria";
     }
 }

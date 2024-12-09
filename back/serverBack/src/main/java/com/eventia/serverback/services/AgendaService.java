@@ -34,4 +34,8 @@ public class AgendaService {
         return agendaRepository.deleteAgenda(idEvento, idAgenda);
     }
 
+    public String deleteAgendas(int idEvento) {
+        return agendaRepository.deleteAgendas(idEvento);
+    }
+
 }

@@ -30,4 +30,12 @@ public class CategoriaService {
     public int searchCategoria(String catNombre) {
         return categoriaRepository.searchCategoria(catNombre);
     }
+
+    public ArrayList<Categoria> getCategorias() {
+        return categoriaRepository.getCategorias();
+    }
+
+    public String deleteEventoCategoria(int idEvento) {
+        return categoriaRepository.deleteEventoCategoria(idEvento);
+    }
 }

@@ -1,17 +1,23 @@
 package com.eventia.serverback.controllers;
 
+import com.eventia.serverback.models.Calificacion;
 import com.eventia.serverback.models.LoginResponse;
 import com.eventia.serverback.models.Usuario;
+import com.eventia.serverback.services.CalificacionService;
 import com.eventia.serverback.services.UsuarioService;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.ArrayList;
 
 @RestController
 @RequestMapping("/usuarios")
 public class UsuarioController {
     private final UsuarioService usuarioService;
+    private final CalificacionService calificacionService;
 
-    public UsuarioController(UsuarioService usuarioService) {
+    public UsuarioController(UsuarioService usuarioService, CalificacionService calificacionService) {
         this.usuarioService = usuarioService;
+        this.calificacionService = calificacionService;
     }
 
     @GetMapping("/{id}")
@@ -34,7 +40,14 @@ public class UsuarioController {
         return this.usuarioService.loginUsuario(usuario);
     }
 
+    @GetMapping("/{id}/calificaciones")
+    public ArrayList<Calificacion> getCalificacionesUsuario(@PathVariable int id) {
+        return this.calificacionService.getCalificacionesUsuario(id);
+    }
 
-
+    @GetMapping("/{id}/calificaciones/{idEvento}")
+    public Calificacion getCalificacion(@PathVariable int id, @PathVariable int idEvento) {
+        return this.calificacionService.getCalificacion(idEvento, id);
+    }
 
 }

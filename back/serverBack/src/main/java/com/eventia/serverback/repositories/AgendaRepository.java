@@ -148,4 +148,25 @@ public class AgendaRepository {
 
         return "Error al eliminar la agenda";
     }
+
+    public String deleteAgendas(int idEvento) {
+        String sql = "DELETE FROM agendas WHERE evt_id = ?";
+
+        try {
+            PreparedStatement preparedStatement = jdbcTemplate.getDataSource().getConnection().prepareStatement(sql);
+            preparedStatement.setInt(1, idEvento);
+
+            int affectedRows = preparedStatement.executeUpdate();
+            if (affectedRows > 0) {
+                return "Agendas eliminadas correctamente";
+            }
+
+            return "No se han eliminado agendas";
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return "Error al eliminar las agendas";
+    }
 }

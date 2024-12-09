@@ -6,6 +6,15 @@ public class Calificacion {
     private String cal_comentario;
     private int cal_num_estrellas;
 
+    public Calificacion() {
+    }
+
+    public Calificacion(int cal_usuario, int cal_evento, String cal_comentario, int cal_num_estrellas) {
+        this.cal_usuario = cal_usuario;
+        this.cal_evento = cal_evento;
+        this.cal_comentario = cal_comentario;
+        this.cal_num_estrellas = cal_num_estrellas;
+    }
 
     public int getCal_usuario() {
         return cal_usuario;
