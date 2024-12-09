@@ -9,6 +9,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import static java.sql.Statement.RETURN_GENERATED_KEYS;
+
 @Repository
 public class UbicacionRepository {
     private final JdbcTemplate jdbcTemplate;
@@ -18,7 +20,7 @@ public class UbicacionRepository {
     }
 
     public ArrayList<Ubicacion> getUbicaciones() {
-        String sql = "SELECT * FROM ubicacion";
+        String sql = "SELECT * FROM ubicaciones";
         ArrayList<Ubicacion> ubicaciones = new ArrayList<>();
 
         try {
@@ -42,11 +44,14 @@ public class UbicacionRepository {
     }
 
     public Ubicacion getUbicacionById(int id) {
-        String sql = "SELECT * FROM ubicacion WHERE ubc_id = ?";
+        String sql = "SELECT * FROM ubicaciones WHERE ubc_id = ?";
         Ubicacion ubicacion = new Ubicacion();
 
         try {
-            ResultSet resultSet = jdbcTemplate.getDataSource().getConnection().createStatement().executeQuery(sql);
+            PreparedStatement preparedStatement = jdbcTemplate.getDataSource().getConnection().prepareStatement(sql);
+            preparedStatement.setInt(1, id);
+
+            ResultSet resultSet = preparedStatement.executeQuery();
 
             if (resultSet.next()) {
                 ubicacion = new Ubicacion(
@@ -67,9 +72,9 @@ public class UbicacionRepository {
     }
 
     public String addUbicacion(Ubicacion ubicacion) {
-        String sql = "INSERT INTO ubicacion (ubc_nombre, ubc_ciudad, ubc_direccion, ubc_capacidad) VALUES (?, ?, ?, ?)";
+        String sql = "INSERT INTO ubicaciones (ubc_nombre, ubc_ciudad, ubc_direccion, ubc_capacidad) VALUES (?, ?, ?, ?)";
         try {
-            PreparedStatement preparedStatement = jdbcTemplate.getDataSource().getConnection().prepareStatement(sql);
+            PreparedStatement preparedStatement = jdbcTemplate.getDataSource().getConnection().prepareStatement(sql, RETURN_GENERATED_KEYS);
             preparedStatement.setString(1, ubicacion.getUbc_nombre());
             preparedStatement.setString(2, ubicacion.getUbc_ciudad());
             preparedStatement.setString(3, ubicacion.getUbc_direccion());
@@ -77,7 +82,9 @@ public class UbicacionRepository {
 
             int affectedRows = preparedStatement.executeUpdate();
             if (affectedRows > 0) {
-                return "Ubicación añadida con id: " + preparedStatement.getGeneratedKeys().getInt(1);
+                ResultSet resultSet = preparedStatement.getGeneratedKeys();
+                resultSet.next();
+                return "Ubicación añadida con id: " + resultSet.getInt(1);
             }
 
         } catch (SQLException e) {
@@ -89,7 +96,7 @@ public class UbicacionRepository {
     }
 
     public String updateUbicacion(int id, Ubicacion ubicacion) {
-        String sql = "UPDATE ubicacion SET ubc_nombre = ?, ubc_ciudad = ?, ubc_direccion = ?, ubc_capacidad = ? WHERE ubc_id = ?";
+        String sql = "UPDATE ubicaciones SET ubc_nombre = ?, ubc_ciudad = ?, ubc_direccion = ?, ubc_capacidad = ? WHERE ubc_id = ?";
         try {
             PreparedStatement preparedStatement = jdbcTemplate.getDataSource().getConnection().prepareStatement(sql);
             preparedStatement.setString(1, ubicacion.getUbc_nombre());
@@ -112,7 +119,7 @@ public class UbicacionRepository {
     }
 
     public String deleteUbicacion(int id) {
-        String sql = "DELETE FROM ubicacion WHERE ubc_id = ?";
+        String sql = "DELETE FROM ubicaciones WHERE ubc_id = ?";
         try {
             PreparedStatement preparedStatement = jdbcTemplate.getDataSource().getConnection().prepareStatement(sql);
             preparedStatement.setInt(1, id);
@@ -131,7 +138,7 @@ public class UbicacionRepository {
     }
 
     public ArrayList<Ubicacion> filtrarCiudad(String ciudad) {
-        String sql = "SELECT * FROM ubicacion WHERE ubc_ciudad LIKE ?";
+        String sql = "SELECT * FROM ubicaciones WHERE ubc_ciudad LIKE ?";
         String ciudadLike = "%" + ciudad + "%";
         ArrayList<Ubicacion> ubicaciones = new ArrayList<>();
 

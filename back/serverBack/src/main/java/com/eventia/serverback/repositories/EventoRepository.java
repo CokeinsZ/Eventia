@@ -18,18 +18,20 @@ public class EventoRepository {
         this.jdbcTemplate = jdbcTemplate;
     }
 
-    public ArrayList<Evento> getEventos() {
+    public ArrayList<Evento> getEventos(int pagina) {
         String sql = "SELECT e.*, c.cat_nombre FROM eventos as e " +
                     "LEFT JOIN evento_categoria as ec ON e.evt_id = ec.evt_id " +
                     "LEFT JOIN categorias as c ON ec.cat_id = c.cat_id " +
-                    "ORDER BY e.evt_id ASC";
+                    "LIMIT 10 OFFSET " + (pagina - 1) * 10;
         ArrayList<Evento> eventos = new ArrayList<>();
         try {
             ResultSet resultSet = jdbcTemplate.getDataSource().getConnection().createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE).executeQuery(sql);
 
-            eventos = asociarCategoriasEventos(resultSet);
+            if (resultSet.isBeforeFirst()) {    //Comprueba si hay resultados
+                eventos = asociarCategoriasEventos(resultSet);
+            }
 
-        } catch (SQLException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
 
@@ -174,4 +176,48 @@ public class EventoRepository {
 
         return eventos;
     }
+
+    public String updateEvento(int id, Evento evento) {
+        String sql = "UPDATE eventos SET evt_nombre = ?, evt_descripcion = ?, evt_precio = ? WHERE evt_id = ?";
+        try {
+            PreparedStatement preparedStatement = jdbcTemplate.getDataSource().getConnection().prepareStatement(sql);
+            preparedStatement.setString(1, evento.getEvt_nombre());
+            preparedStatement.setString(2, evento.getEvt_descripcion());
+            preparedStatement.setFloat(3, evento.getEvt_precio());
+            preparedStatement.setInt(4, id);
+            int affectedRows = preparedStatement.executeUpdate();
+
+            if (affectedRows > 0) {
+                return "Evento actualizado correctamente";
+            }
+
+            return "No se ha actualizado ningún evento";
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return "Error al actualizar el evento";
+    }
+
+    public String deleteEvento(int id) {
+        String sql = "DELETE FROM eventos WHERE evt_id = ?";
+        try {
+            PreparedStatement preparedStatement = jdbcTemplate.getDataSource().getConnection().prepareStatement(sql);
+            preparedStatement.setInt(1, id);
+
+            int affectedRows = preparedStatement.executeUpdate();
+            if (affectedRows > 0) {
+                return "Evento eliminado correctamente";
+            }
+
+            return "No se ha eliminado ningún evento";
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return "Error al eliminar el evento";
+    }
+
 }

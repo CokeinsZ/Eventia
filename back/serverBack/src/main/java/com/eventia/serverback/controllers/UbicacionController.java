@@ -1,6 +1,8 @@
 package com.eventia.serverback.controllers;
 
+import com.eventia.serverback.models.Asiento;
 import com.eventia.serverback.models.Ubicacion;
+import com.eventia.serverback.services.AsientoService;
 import com.eventia.serverback.services.UbicacionService;
 import org.springframework.web.bind.annotation.*;
 
@@ -10,9 +12,11 @@ import java.util.ArrayList;
 @RequestMapping("/ubicaciones")
 public class UbicacionController {
     private final UbicacionService ubicacionService;
+    private final AsientoService asientoService;
 
-    public UbicacionController(UbicacionService ubicacionService) {
+    public UbicacionController(UbicacionService ubicacionService, AsientoService asientoService) {
         this.ubicacionService = ubicacionService;
+        this.asientoService = asientoService;
     }
 
     @GetMapping("/")
@@ -26,7 +30,7 @@ public class UbicacionController {
     }
 
     @GetMapping("/filtrar")
-    public ArrayList<Ubicacion> filtrarCiudad(@RequestParam Ubicacion ubicacion) {
+    public ArrayList<Ubicacion> filtrarCiudad(@RequestBody Ubicacion ubicacion) {
         return ubicacionService.filtrarCiudad(ubicacion.getUbc_ciudad());
     }
 
@@ -43,5 +47,32 @@ public class UbicacionController {
     @DeleteMapping("/{id}")
     public String deleteUbicacion(@PathVariable int id) {
         return ubicacionService.deleteUbicacion(id);
+    }
+
+    // Endpoints para Asientos
+
+    @GetMapping("/asientos/{id}")
+    public ArrayList<Asiento> getAsientosByUbc(@PathVariable int id) {
+        return asientoService.getAsientosByUbc(id);
+    }
+
+    @GetMapping("/asientos/estado")
+    public String getAsientoEstado(@RequestBody Asiento asiento) {
+        return asientoService.getAsientoEstado(asiento);
+    }
+
+    @PostMapping("/asientos")
+    public String addAsiento(@RequestBody Asiento asiento) {
+        return asientoService.addAsiento(asiento);
+    }
+
+    @PutMapping("/asientos")
+    public String updateAsiento(@RequestBody Asiento asiento) {
+        return asientoService.updateAsiento(asiento);
+    }
+
+    @DeleteMapping("/asientos")
+    public String deleteAsiento(@RequestBody Asiento asiento) {
+        return asientoService.deleteAsiento(asiento);
     }
 }
