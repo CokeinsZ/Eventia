@@ -1,4 +1,4 @@
-<!--tabla donde se almacenaran las reservas, desde esta se podra ir al evento en cuestion o eliminarlo de la reserva-->
+<!--Tabla donde se planea qe vaya tanto el apartado del historial como el apartado del valorar eventos-->
 <div class="container-reservas">
     <div class="selector d-flex">
         <a href="reservas"><h3>Reservas</h3></a>
@@ -17,20 +17,20 @@
           <tr>
             <th scope="row">1</th>
             <td>Reserva 1</td>
-            <td><app-info-reserva/></td><!--este componente almacenara de forma ordenada todo lo que nos interese saber acerca del evento-->
-            <td><app-opt-reserva/></td><!--aqui se almacenaran un boton para ir al evento en cuestion y otro para eliminarlo-->
+            <td><app-info-opt/></td><!--aqui se llama esta funcion para meter ahi todos los datos relevantes del evento solo una vez-->
+            <td><app-val-opt/></td><!--similar a lo anterior, solo que aqui se almacena el boton que activa el apartado de valoracion de evento-->
           </tr>
           <tr>
             <th scope="row">2</th>
             <td>Reserva 1</td>
-            <td><app-info-reserva/></td>
-            <td><app-opt-reserva/></td>
+            <td><app-info-opt/></td>
+            <td><app-val-opt/></td>
           </tr>
           <tr>
             <th scope="row">3</th>
             <td >Reserva 1</td>
-            <td><app-info-reserva/></td>
-            <td><app-opt-reserva/></td>
+            <td><app-info-opt/></td>
+            <td><app-val-opt/></td>
           </tr>
         </tbody>
       </table>

@@ -1,0 +1,26 @@
+.container-detalles-evt{
+    background: linear-gradient(to right, rgb(232, 106, 9),rgb(243, 219, 5));
+}
+.btn{
+    background: linear-gradient(to right, rgb(24, 66, 181),rgb(152, 9, 163));
+    color: azure;
+}
+.cont{
+    width: 100px;
+    border-radius: 10%;
+}
+.container-d-title{
+    background: linear-gradient(to right, rgb(24, 66, 181),rgb(152, 9, 163));
+    font-size: xx-large;
+    color: azure;
+}
+.d-text{
+    background-color: azure;
+}
+.maletin-icon{
+    width: 60px;
+    height: 60px;
+}
+.font-p{
+    color: rgb(132, 0, 255)
+}

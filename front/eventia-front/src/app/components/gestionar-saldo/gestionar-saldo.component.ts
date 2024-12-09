@@ -7,5 +7,5 @@ import { Component } from '@angular/core';
   styleUrl: './gestionar-saldo.component.css'
 })
 export class GestionarSaldoComponent {
-
+ saldo=3.33;
 }
