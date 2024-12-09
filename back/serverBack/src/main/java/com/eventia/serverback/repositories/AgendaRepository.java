@@ -36,7 +36,6 @@ public class AgendaRepository {
                         resultSet.getString("ubc_nombre"),
                         resultSet.getString("ubc_ciudad"),
                         resultSet.getInt("evt_id"),
-                        resultSet.getInt("entradas_disponibles"),
                         resultSet.getTimestamp("agd_fecha_inicio").toLocalDateTime(),
                         resultSet.getTimestamp("agd_fecha_fin").toLocalDateTime()
                 );
@@ -70,7 +69,6 @@ public class AgendaRepository {
                         resultSet.getString("ubc_nombre"),
                         resultSet.getString("ubc_ciudad"),
                         resultSet.getInt("evt_id"),
-                        resultSet.getInt("entradas_disponibles"),
                         resultSet.getTimestamp("agd_fecha_inicio").toLocalDateTime(),
                         resultSet.getTimestamp("agd_fecha_fin").toLocalDateTime()
                 );

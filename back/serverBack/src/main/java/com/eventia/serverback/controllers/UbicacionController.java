@@ -35,8 +35,17 @@ public class UbicacionController {
     }
 
     @PostMapping("/")
-    public String addUbicacion(@RequestBody Ubicacion ubicacion) {
-        return ubicacionService.addUbicacion(ubicacion);
+    public String addUbicacion(@RequestParam int numFilas, @RequestParam int numAsientosFila, @RequestBody Ubicacion ubicacion) {
+        int ubcId = ubicacionService.addUbicacion(ubicacion);
+        if (ubicacion.getUbc_capacidad() > 0 && ubcId != -1) {
+            asientoService.addAsientosDefault(ubcId, numFilas, numAsientosFila);
+            return "Ubicacion y asientos añadidos correctamente";
+
+        } else if (ubcId != -1) {
+            return "Ubicacion añadida correctamente";
+        }
+
+        return "Error al añadir la ubicacion";
     }
 
     @PutMapping("/{id}")
@@ -56,19 +65,14 @@ public class UbicacionController {
         return asientoService.getAsientosByUbc(id);
     }
 
-    @GetMapping("/asientos/estado")
-    public String getAsientoEstado(@RequestBody Asiento asiento) {
-        return asientoService.getAsientoEstado(asiento);
-    }
-
     @PostMapping("/asientos")
     public String addAsiento(@RequestBody Asiento asiento) {
         return asientoService.addAsiento(asiento);
     }
 
     @PutMapping("/asientos")
-    public String updateAsiento(@RequestBody Asiento asiento) {
-        return asientoService.updateAsiento(asiento);
+    public String editAsiento(@RequestBody Asiento asiento, @RequestParam String idNuevo) {
+        return asientoService.editAsiento(asiento, idNuevo);
     }
 
     @DeleteMapping("/asientos")

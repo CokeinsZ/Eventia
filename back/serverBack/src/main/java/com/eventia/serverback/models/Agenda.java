@@ -15,13 +15,12 @@ public class Agenda {
     public Agenda() {
     }
 
-    public Agenda(int agd_id, int ubc_id, String ubc_nombre, String ubc_ciudad, int evt_id, int entradas_disponibles, LocalDateTime agd_fecha_inicio, LocalDateTime agd_fecha_fin) {
+    public Agenda(int agd_id, int ubc_id, String ubc_nombre, String ubc_ciudad, int evt_id, LocalDateTime agd_fecha_inicio, LocalDateTime agd_fecha_fin) {
         this.agd_id = agd_id;
         this.ubc_id = ubc_id;
         this.ubc_nombre = ubc_nombre;
         this.ubc_ciudad = ubc_ciudad;
         this.evt_id = evt_id;
-        this.entradas_disponibles = entradas_disponibles;
         this.agd_fecha_inicio = agd_fecha_inicio;
         this.agd_fecha_fin = agd_fecha_fin;
     }
@@ -65,14 +64,6 @@ public class Agenda {
 
     public void setEvt_id(int evt_id) {
         this.evt_id = evt_id;
-    }
-
-    public int getEntradas_disponibles() {
-        return entradas_disponibles;
-    }
-
-    public void setEntradas_disponibles(int entradas_disponibles) {
-        this.entradas_disponibles = entradas_disponibles;
     }
 
     public LocalDateTime getAgd_fecha_inicio() {

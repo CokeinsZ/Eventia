@@ -71,7 +71,7 @@ public class UbicacionRepository {
         return ubicacion;
     }
 
-    public String addUbicacion(Ubicacion ubicacion) {
+    public int addUbicacion(Ubicacion ubicacion) {
         String sql = "INSERT INTO ubicaciones (ubc_nombre, ubc_ciudad, ubc_direccion, ubc_capacidad) VALUES (?, ?, ?, ?)";
         try {
             PreparedStatement preparedStatement = jdbcTemplate.getDataSource().getConnection().prepareStatement(sql, RETURN_GENERATED_KEYS);
@@ -84,26 +84,25 @@ public class UbicacionRepository {
             if (affectedRows > 0) {
                 ResultSet resultSet = preparedStatement.getGeneratedKeys();
                 resultSet.next();
-                return "Ubicación añadida con id: " + resultSet.getInt(1);
+                return resultSet.getInt(1);
             }
 
         } catch (SQLException e) {
             e.printStackTrace();
-            return "Error al añadir ubicación";
+            return -1;
         }
 
-        return "Error al añadir ubicación";
+        return -1;
     }
 
     public String updateUbicacion(int id, Ubicacion ubicacion) {
-        String sql = "UPDATE ubicaciones SET ubc_nombre = ?, ubc_ciudad = ?, ubc_direccion = ?, ubc_capacidad = ? WHERE ubc_id = ?";
+        String sql = "UPDATE ubicaciones SET ubc_nombre = ?, ubc_ciudad = ?, ubc_direccion = ? WHERE ubc_id = ?";
         try {
             PreparedStatement preparedStatement = jdbcTemplate.getDataSource().getConnection().prepareStatement(sql);
             preparedStatement.setString(1, ubicacion.getUbc_nombre());
             preparedStatement.setString(2, ubicacion.getUbc_ciudad());
             preparedStatement.setString(3, ubicacion.getUbc_direccion());
-            preparedStatement.setInt(4, ubicacion.getUbc_capacidad());
-            preparedStatement.setInt(5, id);
+            preparedStatement.setInt(4, id);
 
             int affectedRows = preparedStatement.executeUpdate();
             if (affectedRows > 0) {

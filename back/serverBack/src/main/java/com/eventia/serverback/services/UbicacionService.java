@@ -27,7 +27,7 @@ public class UbicacionService {
 
     }
 
-    public String addUbicacion(Ubicacion ubicacion) {
+    public int addUbicacion(Ubicacion ubicacion) {
         return ubicacionRepository.addUbicacion(ubicacion);
     }
 

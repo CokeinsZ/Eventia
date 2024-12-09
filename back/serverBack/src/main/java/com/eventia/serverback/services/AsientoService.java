@@ -18,20 +18,16 @@ public class AsientoService {
         return asientoRepository.getAsientosByUbc(ubc_id);
     }
 
-    public String getAsientoEstado(Asiento asiento) {
-        return asientoRepository.getAsientoEstado(asiento);
-    }
-
     public String addAsiento(Asiento asiento) {
         return asientoRepository.addAsiento(asiento);
     }
 
-    public String addAsientosDefault(int ubc_id, int cantidad) {
-        return asientoRepository.addAsientosDefault(ubc_id, cantidad);
+    public String editAsiento(Asiento asiento, String idNuevo) {
+        return asientoRepository.editAsiento(asiento, idNuevo);
     }
 
-    public String updateAsiento(Asiento asiento) {
-        return asientoRepository.updateAsiento(asiento);
+    public String addAsientosDefault(int ubc_id, int numFilas, int numAsientosFila) {
+        return asientoRepository.addAsientosDefault(ubc_id, numFilas, numAsientosFila);
     }
 
     public String deleteAsiento(Asiento asiento) {
