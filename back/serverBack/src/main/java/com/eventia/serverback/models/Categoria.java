@@ -1,15 +1,13 @@
 package com.eventia.serverback.models;
 
 public class Categoria {
-    private int cat_id;
     private String cat_nombre;
 
-    public int getCat_id() {
-        return cat_id;
+    public Categoria() {
     }
 
-    public void setCat_id(int cat_id) {
-        this.cat_id = cat_id;
+    public Categoria(String cat_nombre) {
+        this.cat_nombre = cat_nombre;
     }
 
     public String getCat_nombre() {

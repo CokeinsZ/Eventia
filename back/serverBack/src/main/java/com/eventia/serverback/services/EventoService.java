@@ -1,6 +1,7 @@
 package com.eventia.serverback.services;
 
 import com.eventia.serverback.models.Evento;
+import com.eventia.serverback.models.FiltroEvento;
 import com.eventia.serverback.repositories.EventoRepository;
 import org.springframework.stereotype.Service;
 
@@ -14,9 +15,27 @@ public class EventoService {
         this.eventoRepository = eventoRepository;
     }
 
-    public ArrayList<Evento> getEventos() {
-        return eventoRepository.getEventos();
+    public ArrayList<Evento> getEventos(int pagina) {
+        return eventoRepository.getEventos(pagina);
     }
 
+    public Evento getEventoById(int id) {
+        return eventoRepository.getEventoById(id);
+    }
 
+    public int addEvento(Evento evento) {
+        return eventoRepository.addEvento(evento);
+    }
+
+    public ArrayList<Evento> filtrarEventos(FiltroEvento filtros) {
+        return eventoRepository.filtrarEventos(filtros);
+    }
+
+    public String updateEvento(int id, Evento evento) {
+        return eventoRepository.updateEvento(id, evento);
+    }
+
+    public String deleteEvento(int id) {
+        return eventoRepository.deleteEvento(id);
+    }
 }

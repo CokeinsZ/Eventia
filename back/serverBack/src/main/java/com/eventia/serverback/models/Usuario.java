@@ -12,8 +12,35 @@ public class Usuario {
     private String usr_telefono;
     private String usr_cedula;
     private int usr_rol;
+    private String rol_nombre;
     private String usr_estado;
 
+    public Usuario() {
+    }
+
+    public Usuario(String usr_estado) {
+        this.usr_estado = usr_estado;
+    }
+
+    public Usuario(String usr_correo, String usr_contrasena) {
+        this.usr_correo = usr_correo;
+        this.usr_contrasena = usr_contrasena;
+    }
+
+    public Usuario(int usr_id, String usr_correo, String usr_contrasena, float usr_saldo, String usr_nombre1, String usr_nombre2, String usr_apellido1, String usr_apellido2, String usr_telefono, String usr_cedula, String rol_nombre, String usr_estado) {
+        this.usr_id = usr_id;
+        this.usr_correo = usr_correo;
+        this.usr_contrasena = usr_contrasena;
+        this.usr_saldo = usr_saldo;
+        this.usr_nombre1 = usr_nombre1;
+        this.usr_nombre2 = usr_nombre2;
+        this.usr_apellido1 = usr_apellido1;
+        this.usr_apellido2 = usr_apellido2;
+        this.usr_telefono = usr_telefono;
+        this.usr_cedula = usr_cedula;
+        this.rol_nombre = rol_nombre;
+        this.usr_estado = usr_estado;
+    }
 
     public int getUsr_id() {
         return usr_id;
@@ -101,6 +128,14 @@ public class Usuario {
 
     public void setUsr_rol(int usr_rol) {
         this.usr_rol = usr_rol;
+    }
+
+    public String getRol_nombre() {
+        return rol_nombre;
+    }
+
+    public void setRol_nombre(String rol_nombre) {
+        this.rol_nombre = rol_nombre;
     }
 
     public String getUsr_estado() {
