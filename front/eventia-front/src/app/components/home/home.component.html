@@ -1,0 +1,23 @@
+<!--Componente que contiene el home que se ve al inciar-->
+<div class="container-home">
+    <div class="container text-center">
+        <div class="row justify-content-start">
+          <div class="col-5">
+            <h1 class="evt-of-day">Evento del dia</h1>
+          </div>
+        </div>
+        <div class="row justify-content-center">
+          <a href="evento">
+            <app-main-evt/> <!--en esta funcion se almacena un evento principal-->
+          </a>
+        </div>
+        <div class="row justify-content-center d-flex">
+          <div class="col-5 bg-primary-subtle">
+            <app-normal-evt/><!--en este tipo de componente de almacenaran los eventos mas normales-->
+          </div>
+          <div class="col-5 bg-primary-subtle">
+            <app-normal-evt/>
+          </div>
+        </div>
+      </div>
+</div>

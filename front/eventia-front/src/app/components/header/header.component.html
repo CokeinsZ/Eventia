@@ -1,0 +1,84 @@
+<!-- Barra de Navegación -->
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+  <!-- Contenedor principal de la barra de navegación -->
+  <div class="container-fluid">
+    <!-- Logotipo o enlace a la página principal -->
+    <a class="navbar-brand" href="home">Eventia</a>
+    <!-- Contenedor de elementos alineados a la derecha -->
+    <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+      <!-- Lista de navegación -->
+      <ul class="navbar-nav mb-2 mb-lg-0">
+        <li class="nav-item">
+          <!-- Enlace al apartado "Cartera" con botón estilizado -->
+          <a class="nav-link active" aria-current="page" href="cartera">
+            <button class="btn btn-warning">Cartera</button>
+          </a>
+        </li>
+        <li class="nav-item">
+          <!-- Enlace al apartado "Login" con botón estilizado -->
+          <a class="nav-link" href="login">
+            <button class="btn btn-warning">Login</button>
+          </a>
+        </li>
+        <li class="nav-item dropdown">
+          <!-- Enlace al apartado "Registro" con botón estilizado -->
+          <a class="nav-link" href="register">
+            <button class="btn btn-warning">Sign up</button>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- Barra de búsqueda -->
+<div class="container-fluid">
+  <!-- Formulario de búsqueda -->
+  <form class="d-flex" role="search">
+    <div class="container2 d-flex col">
+      <!-- Campo de entrada para buscar -->
+      <input class="form-control me-2 w-50" type="search" placeholder="Search" aria-label="Search">
+      <!-- Botón para realizar la búsqueda -->
+      <button class="btn btn-success" type="submit">Search</button>
+    </div>
+    <div class="container d-flex col">
+      <!-- Filtro por ciudad -->
+      <div class="container-filters c">
+        <select class="form-select" aria-label="Default select example">
+          <!-- Opciones predefinidas para seleccionar una ciudad -->
+          <option selected>Ciudad</option>
+          <option value="1">One</option>
+          <option value="2">Two</option>
+          <option value="3">Three</option>
+        </select>
+      </div>
+      <!-- Filtro por fecha -->
+      <div class="container-filters">
+        <select class="form-select" aria-label="Default select example">
+          <!-- Opciones predefinidas para seleccionar una fecha -->
+          <option selected>Fecha</option>
+          <option value="1">One</option>
+          <option value="2">Two</option>
+          <option value="3">Three</option>
+        </select>
+      </div>
+      <!-- Filtro por categoría -->
+      <div class="container-filters">
+        <select class="form-select" aria-label="Default select example">
+          <!-- Opciones predefinidas para seleccionar una categoría -->
+          <option selected>Categoria</option>
+          <option value="1">One</option>
+          <option value="2">Two</option>
+          <option value="3">Three</option>
+        </select>
+      </div>
+    </div>
+    <!-- Enlace al apartado "Reservas" -->
+    <button class="btn btn-light">
+      <a href="reservas">Reservas</a>
+    </button>
+  </form>
+</div>
+
+<!-- Acordeón personalizado para mostrar contenido dinámico -->
+<app-acordeon></app-acordeon>

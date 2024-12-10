@@ -1,0 +1,13 @@
+.contenedor{
+    align-items: center;
+    justify-content: center;
+}
+
+.banner-img{
+    margin-right: 40px;
+    width: 80px;
+}
+.texto{
+    margin-left: 40px;
+    margin-right: 40px;
+}

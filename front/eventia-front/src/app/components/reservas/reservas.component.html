@@ -1,0 +1,37 @@
+<!--tabla donde se almacenaran las reservas, desde esta se podra ir al evento en cuestion o eliminarlo de la reserva-->
+<div class="container-reservas">
+    <div class="selector d-flex">
+        <a href="reservas"><h3>Reservas</h3></a>
+        <a href="historial"><h3>_Historial</h3></a>
+    </div>
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">First</th>
+            <th scope="col">Last</th>
+            <th scope="col">Handle</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">1</th>
+            <td>Reserva 1</td>
+            <td><app-info-reserva/></td><!--este componente almacenara de forma ordenada todo lo que nos interese saber acerca del evento-->
+            <td><app-opt-reserva/></td><!--aqui se almacenaran un boton para ir al evento en cuestion y otro para eliminarlo-->
+          </tr>
+          <tr>
+            <th scope="row">2</th>
+            <td>Reserva 1</td>
+            <td><app-info-reserva/></td>
+            <td><app-opt-reserva/></td>
+          </tr>
+          <tr>
+            <th scope="row">3</th>
+            <td >Reserva 1</td>
+            <td><app-info-reserva/></td>
+            <td><app-opt-reserva/></td>
+          </tr>
+        </tbody>
+      </table>
+</div>

@@ -1,0 +1,28 @@
+<div class="d-flex">
+    <app-perfil-organizador/>
+    <div class="d-flex">
+        <div>
+            <h1>Eventos</h1>
+            <div class="cont-evt d-flex">
+                <img src="banner.jpg" alt="banner-img" class="banner-img rounded img-fluid float-start">
+                <h3>Nombre del Evento</h3>
+            </div>
+        </div>
+        <div>
+            <h2 class= "col-3">fecha</h2>
+            <h3 class="text">fecha</h3>
+        </div>
+        <div>
+            <h2>valoracion</h2>
+            <div class=" cont-val d-flex">
+                <app-verify-stars/>
+                <h3>({{cont_val}})</h3>
+            </div>
+        </div>
+        <div>
+            <h2>Comentarios</h2>
+            <h3 class="cont-coments">{{cont_comentarios}}</h3>
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,44 @@
+.cont-principal{
+    margin: 50px;
+    background-color: #bbb;
+}
+.imagen{
+    width: 300px;
+    height: 300px;
+}
+.navbar{
+    background: linear-gradient(to right, rgb(24, 66, 181),rgb(152, 9, 163));
+}
+.texto{
+    color: azure;
+}
+.scrollsbar{
+    height: 15%;
+}
+.scroll-container {
+    height: 20vh; /* 10% del viewport */
+    overflow-y: auto; /* Solo habilita scroll vertical */
+    border: 1px solid #ccc; /* Opcional para visualización */
+}
+.contenedor{
+    margin: 20px;
+}
+.form-control{
+    width: 100%;
+}
+.texto-sub-cont{
+    margin-right: 20px;
+}
+.container{
+    background-color: #4a4a4a;
+    width: 70%;
+    height: 160px;
+    border-radius: 30px;
+    align-items: center;
+
+}
+.columna-num-1{
+    margin-left: 5%;
+    margin-right: 5%;
+    color: azure;
+}

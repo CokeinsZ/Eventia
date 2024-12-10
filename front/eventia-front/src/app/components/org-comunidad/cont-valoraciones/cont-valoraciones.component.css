@@ -1,0 +1,23 @@
+.profile-img{
+    margin-left: 40px;
+    margin-right: 40px;
+    width: 30px;
+    height: 30px;
+}
+.banner-img{
+    margin-left: 40px;
+    margin-right: 40px;
+    width: 80px;
+}
+.container{
+    align-items: center;
+}
+.texto{
+    margin-left: 40px;
+    width: 25%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    direction: ltr; /* Cambia la orientación del texto */
+    text-align: left; /* Asegura que el texto visible se alinee correctamente */
+}

@@ -1,0 +1,26 @@
+
+.navbar-brand{
+    color: azure;
+    font-size: x-large;
+}
+.navbar{
+    background: linear-gradient(to right, rgb(24, 66, 181),rgb(152, 9, 163));
+}
+.collapse{
+    display: flex;
+}
+
+
+.opcion-navbar{
+    color: black;
+    border: none;
+    background-color: transparent;
+}
+.container-fluid{
+    
+    background: linear-gradient(to right, rgb(24, 66, 181),rgb(152, 9, 163));
+}
+.accordion-button{
+    background: linear-gradient(to right, rgb(24, 66, 181),rgb(152, 9, 163));
+    color: white;
+}

@@ -1,0 +1,49 @@
+<!-- Contenedor principal para reservas e historial -->
+<div class="container-reservas">
+  <!-- Barra de navegación para cambiar entre "Reservas" e "Historial" -->
+  <div class="selector d-flex">
+      <!-- Enlace a la página de reservas -->
+      <a href="reservas"><h3>Reservas</h3></a>
+      <!-- Enlace a la página de historial -->
+      <a href="historial"><h3>_Historial</h3></a>
+  </div>
+
+  <!-- Tabla para mostrar los datos de reservas -->
+  <table class="table">
+      <thead>
+        <tr>
+          <!-- Encabezados de la tabla -->
+          <th scope="col">#</th>
+          <th scope="col">First</th>
+          <th scope="col">Last</th>
+          <th scope="col">Handle</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Fila de reserva 1 -->
+        <tr>
+          <th scope="row">1</th>
+          <!-- Nombre de la reserva -->
+          <td>Reserva 1</td>
+          <!-- Componente personalizado para información del evento -->
+          <td><app-info-opt/></td>
+          <!-- Componente personalizado para valoración del evento -->
+          <td><app-val-opt/></td>
+        </tr>
+        <!-- Fila de reserva 2 -->
+        <tr>
+          <th scope="row">2</th>
+          <td>Reserva 1</td>
+          <td><app-info-opt/></td>
+          <td><app-val-opt/></td>
+        </tr>
+        <!-- Fila de reserva 3 -->
+        <tr>
+          <th scope="row">3</th>
+          <td>Reserva 1</td>
+          <td><app-info-opt/></td>
+          <td><app-val-opt/></td>
+        </tr>
+      </tbody>
+    </table>
+</div>
