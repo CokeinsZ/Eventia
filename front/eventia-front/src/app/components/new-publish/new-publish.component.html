@@ -1,0 +1,175 @@
+<div class="cont-principal">
+    <div class="d-flex">
+        <!-- Contenedor izquierdo (Lugares) -->
+        <div class="contenedor">
+            <!-- Imagen del banner del evento -->
+            <img src="{{banner}}" alt="" class="imagen rounded mb-2">
+            <div>
+                <!-- Barra de navegación para la sección de Lugares -->
+                <nav id="navbar-example2" class="navbar bg-body-tertiary px-3">
+                    <h1 class="texto">Lugares</h1>
+                </nav>
+                <!-- Lista de lugares con checkboxes -->
+                <div class="scroll-container">
+                    <label class="d-block">
+                        <input type="checkbox" name="lugares" value="1" class="me-2"> First heading
+                    </label>
+                    <label class="d-block">
+                        <input type="checkbox" name="lugares" value="2" class="me-2"> Second heading
+                    </label>
+                    <label class="d-block">
+                        <input type="checkbox" name="lugares" value="3" class="me-2"> Third heading
+                    </label>
+                    <label class="d-block">
+                        <input type="checkbox" name="lugares" value="4" class="me-2"> Fourth heading
+                    </label>
+                    <label class="d-block">
+                        <input type="checkbox" name="lugares" value="5" class="me-2"> Fifth heading
+                    </label>
+                </div>
+            </div>
+        </div>
+
+        <!-- Contenedor derecho (Formulario y capacidad) -->
+        <div class="contenedor">
+            <!-- Botón de publicar evento -->
+            <button class="btn btn-primary d-flex justify-content-end mb-2">Publicar</button>
+            <!-- Campo para ingresar el nombre del evento -->
+            <input class="form-control mb-2" type="Nombre" placeholder="Nombre del evento" aria-label="Nombre">
+            <!-- Campo para ingresar la descripción del evento -->
+            <input class="form-control mb-2 " type="Nombre" placeholder="Descripcion del evento" aria-label="Nombre">
+
+            <div class="sub-contenedor">
+                <!-- Campo para ingresar la fecha del evento -->
+                <div class="d-flex">
+                    <h4 class="texto-sub-cont">fecha</h4>
+                    <input class="form-control mb-2 " type="Nombre" placeholder="fecha del evento" aria-label="Nombre">
+                </div>
+
+                <!-- Campo para ingresar la capacidad total del evento -->
+                <div class="d-flex">
+                    <h4 class="texto-sub-cont">Capacidad</h4>
+                    <input class="form-control mb-2 " type="Nombre" placeholder="Capacidad Total" aria-label="Nombre">
+                </div>
+
+                <!-- Tabla para mostrar la capacidad y precio de entradas -->
+                <div>
+                    <h4 class="texto-sub-cont">Capacidad</h4>
+                    <table class="table">
+                        <thead>
+                          <tr>
+                            <th scope="col">Nombre</th>
+                            <th scope="col">Disponibilidad</th>
+                            <th scope="col">Precio</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <!-- Fila para la categoría VIP -->
+                          <tr>
+                            <th scope="row">VIP</th>
+                            <td>{{(capacidad_max/100)*10}}</td> <!-- Cálculo dinámico de la disponibilidad -->
+                            <td>1000</td>
+                          </tr>
+
+                          <!-- Fila para la categoría Normal -->
+                          <tr>
+                            <th scope="row">Normal</th>
+                            <td>{{(capacidad_max/100)*30}}</td> <!-- Cálculo dinámico de la disponibilidad -->
+                            <td>300</td>
+                          </tr>
+
+                          <!-- Fila para la categoría Pobre -->
+                          <tr>
+                            <th scope="row">Pobre</th>
+                            <td >{{(capacidad_max/100)*60}}</td> <!-- Cálculo dinámico de la disponibilidad -->
+                            <td>100</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Sección de categorías -->
+    <div>
+        <h1>categorias</h1>
+        <div class="container d-flex justify-content-center">
+            <!-- Primera columna de categorías -->
+            <div class="columna-num-1">
+                <label class="d-block">
+                    <input type="checkbox" name="lugares" value="1" class="me-2"> Musica
+                </label>
+                <label class="d-block">
+                    <input type="checkbox" name="lugares" value="2" class="me-2"> Arte
+                </label>
+                <label class="d-block">
+                    <input type="checkbox" name="lugares" value="3" class="me-2"> Deporte
+                </label>
+                <label class="d-block">
+                    <input type="checkbox" name="lugares" value="4" class="me-2"> Cine y Teatro
+                </label>
+                <label class="d-block">
+                    <input type="checkbox" name="lugares" value="5" class="me-2"> Tecnologia
+                </label>
+            </div>
+
+            <!-- Segunda columna de categorías -->
+            <div class="columna-num-1">
+                <label class="d-block">
+                    <input type="checkbox" name="lugares" value="1" class="me-2"> Educacion
+                </label>
+                <label class="d-block">
+                    <input type="checkbox" name="lugares" value="2" class="me-2"> Cultura
+                </label>
+                <label class="d-block">
+                    <input type="checkbox" name="lugares" value="3" class="me-2"> Gastronomia
+                </label>
+                <label class="d-block">
+                    <input type="checkbox" name="lugares" value="4" class="me-2"> Literatura
+                </label>
+                <label class="d-block">
+                    <input type="checkbox" name="lugares" value="5" class="me-2"> Moda
+                </label>
+            </div>
+
+            <!-- Tercera columna de categorías -->
+            <div class="columna-num-1">
+                <label class="d-block">
+                    <input type="checkbox" name="lugares" value="1" class="me-2"> Ciencia
+                </label>
+                <label class="d-block">
+                    <input type="checkbox" name="lugares" value="2" class="me-2"> Espiritualidad
+                </label>
+                <label class="d-block">
+                    <input type="checkbox" name="lugares" value="3" class="me-2"> Fotografia
+                </label>
+                <label class="d-block">
+                    <input type="checkbox" name="lugares" value="4" class="me-2"> Danza
+                </label>
+                <label class="d-block">
+                    <input type="checkbox" name="lugares" value="5" class="me-2"> Videojuegos
+                </label>
+            </div>
+
+            <!-- Cuarta columna de categorías -->
+            <div class="columna-num-1">
+                <label class="d-block">
+                    <input type="checkbox" name="lugares" value="1" class="me-2"> Ecologia
+                </label>
+                <label class="d-block">
+                    <input type="checkbox" name="lugares" value="2" class="me-2"> Familia
+                </label>
+                <label class="d-block">
+                    <input type="checkbox" name="lugares" value="3" class="me-2"> Negocios
+                </label>
+                <label class="d-block">
+                    <input type="checkbox" name="lugares" value="4" class="me-2"> Salud
+                </label>
+                <label class="d-block">
+                    <input type="checkbox" name="lugares" value="5" class="me-2"> Turismo
+                </label>
+            </div>
+        </div>
+    </div>
+</div>

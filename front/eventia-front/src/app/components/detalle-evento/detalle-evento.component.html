@@ -1,37 +1,62 @@
 <div class="container-detalles-evt ">
-        <div class="container bg-warning d-flex mb-3">
-            <img src=banner.jpg class="img-thumbnail float-start mb-2" alt="...">
-            <div class="container">
-                <div class=" cont2 d-flex">
-                    <h1 class="float-start">Titulo del Evento</h1>
-                </div>
-                <div class="container bg-light">
-                    <h3 class="fecha text-primary">(Fecha)</h3>
-                    <h3 class=" evt-place text-secondary">
-                        Lugar del Evento
-                    </h3>
-                </div>
-                <div class="btn-price-container d-flex">
-                    <button class="btn">Comprar</button>
-                    <div class="cont bg-light">Price</div>
-                </div>
+    <!-- Contenedor principal que agrupa toda la información y detalles del evento -->
+    <div class="container bg-warning d-flex mb-3">
+        <!-- Subcontenedor con fondo amarillo que contiene el banner del evento y los detalles principales -->
+        <img src="banner.jpg" class="img-thumbnail float-start mb-2" alt="...">
+        <!-- Imagen del banner del evento con un diseño de miniatura -->
+        <div class="container">
+            <!-- Contenedor interno para organizar el título y detalles del evento -->
+            <div class="cont2 d-flex">
+                <!-- Subcontenedor que utiliza flexbox para alinear elementos -->
+                <h1 class="float-start">Titulo del Evento</h1>
+                <!-- Título principal del evento -->
+            </div>
+            <div class="container bg-light">
+                <!-- Contenedor con fondo claro para la fecha y el lugar del evento -->
+                <h3 class="fecha text-primary">(Fecha)</h3>
+                <!-- Fecha del evento, estilizada con color primario -->
+                <h3 class="evt-place text-secondary">
+                    Lugar del Evento
+                </h3>
+                <!-- Lugar donde se llevará a cabo el evento, estilizado con color secundario -->
+            </div>
+            <div class="btn-price-container d-flex">
+                <!-- Contenedor para el botón de compra y el precio, alineados con flexbox -->
+                <button class="btn">Comprar</button>
+                <!-- Botón para iniciar el proceso de compra -->
+                <div class="cont bg-light">Price</div>
+                <!-- Contenedor con fondo claro para mostrar el precio del evento -->
             </div>
         </div>
-        <div class="container-description">
-            <div class="container-d-title">
-                Descripcion
-            </div>
-            <h2 class=" d-text text-break">aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</h2>
+    </div>
+    <div class="container-description">
+        <!-- Contenedor que agrupa la sección de descripción del evento -->
+        <div class="container-d-title">
+            Descripcion
         </div>
-        <div class="responsable d-flex mb-3">
-            <img src="639343.png" alt="maletin icon" class="maletin-icon">
-            <div class="responsable-info">
-                <h2 class="font-p">Responsable</h2>
-                <h3 class="font-p">nombre del Responsable</h3>
-            </div>
+        <!-- Título de la sección de descripción -->
+        <h2 class="d-text text-break">
+            <!-- Descripción detallada del evento. La clase "text-break" asegura que el texto largo se ajuste adecuadamente -->
+            aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+        </h2>
+    </div>
+    <div class="responsable d-flex mb-3">
+        <!-- Contenedor para la información del responsable del evento, alineado con flexbox -->
+        <img src="639343.png" alt="maletin icon" class="maletin-icon">
+        <!-- Imagen que representa al responsable, con un ícono de maletín -->
+        <div class="responsable-info">
+            <!-- Subcontenedor para los datos del responsable -->
+            <h2 class="font-p">Responsable</h2>
+            <!-- Etiqueta que identifica al responsable -->
+            <h3 class="font-p">nombre del Responsable</h3>
+            <!-- Nombre del responsable del evento -->
         </div>
-        <div class="entradas-dis justify-content-center">
-            <h1 class="font-p ">Disponibilidad de Entradas</h1>
-            <app-tabla-disponibilidad/>
-        </div>
+    </div>
+    <div class="entradas-dis justify-content-center">
+        <!-- Contenedor que muestra la disponibilidad de entradas, centrado con flexbox -->
+        <h1 class="font-p">Disponibilidad de Entradas</h1>
+        <!-- Título de la sección de disponibilidad -->
+        <app-tabla-disponibilidad/>
+        <!-- Componente que renderiza la tabla de disponibilidad de entradas. Puede ser un componente de framework como Angular, React, etc. -->
+    </div>
 </div>

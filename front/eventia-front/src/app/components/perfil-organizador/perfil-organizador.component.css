@@ -1,0 +1,9 @@
+
+.cont-opts {
+    display: flex;
+    flex-direction: column;
+    gap: 10px; /* Opcional: espacio entre los botones */
+}
+.texto{
+    color: azure;
+}

@@ -1,0 +1,16 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.star{
+    font-size: 20px;
+    color: #bbb;
+    transition: color 0.3s;
+    cursor: pointer;
+}
+.star:hover,
+.star.checked{
+    color: gold;
+
+}

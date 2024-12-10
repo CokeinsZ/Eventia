@@ -1,0 +1,13 @@
+.banner-img{
+    width: 100px;;
+}
+.text{
+    align-items: flex-end;
+}
+.cont-val{
+    align-items: center;
+    flex-direction: column;
+}
+.cont-coments{
+    justify-content: center;
+}

@@ -1,37 +1,49 @@
-<!--Tabla donde se planea qe vaya tanto el apartado del historial como el apartado del valorar eventos-->
+<!-- Contenedor principal para reservas e historial -->
 <div class="container-reservas">
-    <div class="selector d-flex">
-        <a href="reservas"><h3>Reservas</h3></a>
-        <a href="historial"><h3>_Historial</h3></a>
-    </div>
-    <table class="table">
-        <thead>
-          <tr>
-            <th scope="col">#</th>
-            <th scope="col">First</th>
-            <th scope="col">Last</th>
-            <th scope="col">Handle</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <th scope="row">1</th>
-            <td>Reserva 1</td>
-            <td><app-info-opt/></td><!--aqui se llama esta funcion para meter ahi todos los datos relevantes del evento solo una vez-->
-            <td><app-val-opt/></td><!--similar a lo anterior, solo que aqui se almacena el boton que activa el apartado de valoracion de evento-->
-          </tr>
-          <tr>
-            <th scope="row">2</th>
-            <td>Reserva 1</td>
-            <td><app-info-opt/></td>
-            <td><app-val-opt/></td>
-          </tr>
-          <tr>
-            <th scope="row">3</th>
-            <td >Reserva 1</td>
-            <td><app-info-opt/></td>
-            <td><app-val-opt/></td>
-          </tr>
-        </tbody>
-      </table>
+  <!-- Barra de navegación para cambiar entre "Reservas" e "Historial" -->
+  <div class="selector d-flex">
+      <!-- Enlace a la página de reservas -->
+      <a href="reservas"><h3>Reservas</h3></a>
+      <!-- Enlace a la página de historial -->
+      <a href="historial"><h3>_Historial</h3></a>
+  </div>
+
+  <!-- Tabla para mostrar los datos de reservas -->
+  <table class="table">
+      <thead>
+        <tr>
+          <!-- Encabezados de la tabla -->
+          <th scope="col">#</th>
+          <th scope="col">First</th>
+          <th scope="col">Last</th>
+          <th scope="col">Handle</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Fila de reserva 1 -->
+        <tr>
+          <th scope="row">1</th>
+          <!-- Nombre de la reserva -->
+          <td>Reserva 1</td>
+          <!-- Componente personalizado para información del evento -->
+          <td><app-info-opt/></td>
+          <!-- Componente personalizado para valoración del evento -->
+          <td><app-val-opt/></td>
+        </tr>
+        <!-- Fila de reserva 2 -->
+        <tr>
+          <th scope="row">2</th>
+          <td>Reserva 1</td>
+          <td><app-info-opt/></td>
+          <td><app-val-opt/></td>
+        </tr>
+        <!-- Fila de reserva 3 -->
+        <tr>
+          <th scope="row">3</th>
+          <td>Reserva 1</td>
+          <td><app-info-opt/></td>
+          <td><app-val-opt/></td>
+        </tr>
+      </tbody>
+    </table>
 </div>

@@ -14,6 +14,13 @@
     font-size: xx-large;
     color: azure;
 }
+.container-description{
+    margin-left: 7%;
+    margin-right: 7%;
+    justify-content: center;
+    width: auto;
+    height: auto;
+}
 .d-text{
     background-color: azure;
 }
