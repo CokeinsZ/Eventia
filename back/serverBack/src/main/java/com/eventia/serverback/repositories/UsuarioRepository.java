@@ -315,4 +315,25 @@ public class UsuarioRepository {
 
         return -1;
     }
+
+    public float updateSaldo(int usuarioId, float saldoNuevo) {
+        String sql = "UPDATE usuarios SET usr_saldo = ? WHERE usr_id = ?";
+
+        try {
+            PreparedStatement preparedStatement = jdbcTemplate.getDataSource().getConnection().prepareStatement(sql);
+            preparedStatement.setFloat(1, saldoNuevo);
+            preparedStatement.setInt(2, usuarioId);
+
+            int affectedRows = preparedStatement.executeUpdate();
+
+            if (affectedRows > 0) {
+                return getSaldo(usuarioId);
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return -1;
+    }
 }

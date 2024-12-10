@@ -1,9 +1,6 @@
 package com.eventia.serverback.services;
 
-import com.eventia.serverback.models.Agenda;
-import com.eventia.serverback.models.AgendaAsientos;
-import com.eventia.serverback.models.Asiento;
-import com.eventia.serverback.models.Ubicacion;
+import com.eventia.serverback.models.*;
 import com.eventia.serverback.repositories.AgendaRepository;
 import org.springframework.stereotype.Service;
 
@@ -25,12 +22,20 @@ public class AgendaService {
         return agendaRepository.getAgendas(idEvento);
     }
 
-    public Agenda getAgendaById(int idEvento, int idAgenda) {
-        return agendaRepository.getAgendaById(idEvento, idAgenda);
+    public Agenda getAgendaById(int idAgenda) {
+        return agendaRepository.getAgendaById(idAgenda);
     }
 
     public ArrayList<AgendaAsientos> getAsientosByAgenda(int idAgenda) {
         return agendaAsientoService.getAgendaAsientos(idAgenda);
+    }
+
+    public AgendaAsientos getAgendaAsiento(int idAgenda, String idAsiento) {
+        return agendaAsientoService.getAgendaAsiento(idAgenda, idAsiento);
+    }
+
+    public String updateAgendaAsiento(int idAgenda, AgendaAsientos agendaAsiento) {
+        return agendaAsientoService.updateAgendaAsiento(idAgenda, agendaAsiento);
     }
 
     public String addAgenda(int idEvento, Agenda agenda) {
@@ -65,4 +70,15 @@ public class AgendaService {
         return agendaRepository.deleteAgendas(idEvento);
     }
 
+    public float getEventoPrecio(int rsvAgenda) {
+        return agendaRepository.getEventoPrecio(rsvAgenda);
+    }
+
+    public Evento getEvento(int agenda) {
+        return agendaRepository.getEvento(agenda);
+    }
+
+    public String terminarAgenda(int id, int idAgenda) {
+        return agendaRepository.terminarAgenda(id, idAgenda);
+    }
 }

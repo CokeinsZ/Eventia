@@ -1,6 +1,7 @@
 package com.eventia.serverback.repositories;
 
 import com.eventia.serverback.models.Agenda;
+import com.eventia.serverback.models.Evento;
 import com.eventia.serverback.models.Reserva;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
@@ -38,7 +39,8 @@ public class AgendaRepository {
                         resultSet.getString("ubc_ciudad"),
                         resultSet.getInt("evt_id"),
                         resultSet.getTimestamp("agd_fecha_inicio").toLocalDateTime(),
-                        resultSet.getTimestamp("agd_fecha_fin").toLocalDateTime()
+                        resultSet.getTimestamp("agd_fecha_fin").toLocalDateTime(),
+                        resultSet.getString("agd_estado")
                 );
 
                 agendas.add(agenda);
@@ -51,16 +53,15 @@ public class AgendaRepository {
         return agendas;
     }
 
-    public Agenda getAgendaById(int idEvento, int idAgenda) {
+    public Agenda getAgendaById(int idAgenda) {
         String sql = "SELECT a.*, u.ubc_nombre, u.ubc_ciudad FROM agendas a " +
                 "INNER JOIN ubicaciones u ON a.ubc_id = u.ubc_id " +
-                "WHERE a.evt_id = ? AND a.agd_id = ?";
+                "WHERE a.agd_id = ?";
         Agenda agenda = new Agenda();
 
         try {
             PreparedStatement preparedStatement = jdbcTemplate.getDataSource().getConnection().prepareStatement(sql);
-            preparedStatement.setInt(1, idEvento);
-            preparedStatement.setInt(2, idAgenda);
+            preparedStatement.setInt(1, idAgenda);
             ResultSet resultSet = preparedStatement.executeQuery();
 
             if (resultSet.next()) {
@@ -71,7 +72,8 @@ public class AgendaRepository {
                         resultSet.getString("ubc_ciudad"),
                         resultSet.getInt("evt_id"),
                         resultSet.getTimestamp("agd_fecha_inicio").toLocalDateTime(),
-                        resultSet.getTimestamp("agd_fecha_fin").toLocalDateTime()
+                        resultSet.getTimestamp("agd_fecha_fin").toLocalDateTime(),
+                        resultSet.getString("agd_estado")
                 );
             }
 
@@ -191,5 +193,75 @@ public class AgendaRepository {
         }
 
         return true;
+    }
+
+    public float getEventoPrecio(int rsvAgenda) {
+        String sql = "SELECT e.evt_precio FROM eventos e " +
+                "INNER JOIN agendas a ON e.evt_id = a.evt_id " +
+                "WHERE a.agd_id = ?";
+
+        try {
+            PreparedStatement preparedStatement = jdbcTemplate.getDataSource().getConnection().prepareStatement(sql);
+            preparedStatement.setInt(1, rsvAgenda);
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            if (resultSet.next()) {
+                return resultSet.getFloat("evt_precio");
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return 0;
+    }
+
+    public Evento getEvento(int agenda) {
+        String sql = "SELECT e.* FROM eventos e " +
+                "INNER JOIN agendas a ON e.evt_id = a.evt_id " +
+                "WHERE a.agd_id = ?";
+        Evento evento = new Evento();
+
+        try {
+            PreparedStatement preparedStatement = jdbcTemplate.getDataSource().getConnection().prepareStatement(sql);
+            preparedStatement.setInt(1, agenda);
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            if (resultSet.next()) {
+                evento = new Evento(
+                        resultSet.getInt("evt_organizador"),
+                        resultSet.getString("evt_nombre"),
+                        resultSet.getString("evt_descripcion"),
+                        resultSet.getFloat("evt_precio"),
+                        0
+                );
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return evento;
+    }
+
+    public String terminarAgenda(int id, int idAgenda) {
+        String sql = "UPDATE agendas SET agd_estado = 'terminada' WHERE evt_id = ? AND agd_id = ?";
+
+        try {
+            PreparedStatement preparedStatement = jdbcTemplate.getDataSource().getConnection().prepareStatement(sql);
+            preparedStatement.setInt(1, id);
+            preparedStatement.setInt(2, idAgenda);
+
+            int affectedRows = preparedStatement.executeUpdate();
+            if (affectedRows > 0) {
+                return "Agenda terminada correctamente";
+            }
+
+            return "No se ha terminado la agenda";
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            return "Error al terminar la agenda: " + e.getMessage();
+        }
     }
 }

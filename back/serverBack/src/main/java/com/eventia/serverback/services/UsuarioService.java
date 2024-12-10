@@ -53,4 +53,8 @@ public class UsuarioService {
     public float getSaldo(int id) {
         return this.usuarioRepository.getSaldo(id);
     }
+
+    public float updateSaldo(int usuarioId, float nuevoSaldo) {
+        return this.usuarioRepository.updateSaldo(usuarioId, nuevoSaldo);
+    }
 }

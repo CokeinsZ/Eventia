@@ -34,4 +34,8 @@ public class AgendaAsientoService {
     public String deleteAgendaAsiento(int idAgenda, String ast_id) {
         return agendaAsientoRepository.deleteAgendaAsiento(idAgenda, ast_id);
     }
+
+    public AgendaAsientos getAgendaAsiento(int idAgenda, String idAsiento) {
+        return agendaAsientoRepository.getAgendaAsiento(idAgenda, idAsiento);
+    }
 }

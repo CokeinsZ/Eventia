@@ -133,4 +133,27 @@ public class AgendaAsientoRepository {
         }
     }
 
+    public AgendaAsientos getAgendaAsiento(int idAgenda, String idAsiento) {
+        String sql = "SELECT * FROM agenda_asientos WHERE agd_id = ? AND ast_id = ?";
+        AgendaAsientos agendaAsiento = null;
+        try {
+            PreparedStatement preparedStatement = jdbcTemplate.getDataSource().getConnection().prepareStatement(sql);
+            preparedStatement.setInt(1, idAgenda);
+            preparedStatement.setString(2, idAsiento);
+
+            ResultSet resultSet = preparedStatement.executeQuery();
+            if (resultSet.next()) {
+                agendaAsiento = new AgendaAsientos(
+                        resultSet.getInt("agd_id"),
+                        resultSet.getString("ast_id"),
+                        resultSet.getInt("ubc_id"),
+                        resultSet.getString("estado")
+                );
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return agendaAsiento;
+    }
 }

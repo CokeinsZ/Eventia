@@ -74,7 +74,7 @@ public class EventoController {
 
     @GetMapping("/{id}/agendas/{idAgenda}")
     public Agenda obtenerAgendaPorId(@PathVariable int id, @PathVariable int idAgenda) {
-        return agendaService.getAgendaById(id, idAgenda);
+        return agendaService.getAgendaById(idAgenda);
     }
 
     @GetMapping("/{id}/agendas/asientos/{idAgenda}")
@@ -90,6 +90,11 @@ public class EventoController {
     @PutMapping("/{id}/agendas")
     public String actualizarAgenda(@PathVariable int id, @RequestBody Agenda agenda) {
         return agendaService.updateAgenda(id, agenda);
+    }
+
+    @PutMapping("/{id}/agendas/terminar")
+    public String terminarAgenda(@PathVariable int id, @RequestParam int idAgenda) {
+        return agendaService.terminarAgenda(id, idAgenda);
     }
 
     @DeleteMapping("/{id}/agendas/{idAgenda}")

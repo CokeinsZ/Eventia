@@ -13,6 +13,7 @@ public class Agenda {
     private int entradas_disponibles;
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private LocalDateTime agd_fecha_inicio;
+    private String agd_estado;
 
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private LocalDateTime agd_fecha_fin;
@@ -20,7 +21,7 @@ public class Agenda {
     public Agenda() {
     }
 
-    public Agenda(int agd_id, int ubc_id, String ubc_nombre, String ubc_ciudad, int evt_id, LocalDateTime agd_fecha_inicio, LocalDateTime agd_fecha_fin) {
+    public Agenda(int agd_id, int ubc_id, String ubc_nombre, String ubc_ciudad, int evt_id, LocalDateTime agd_fecha_inicio, LocalDateTime agd_fecha_fin, String agd_estado) {
         this.agd_id = agd_id;
         this.ubc_id = ubc_id;
         this.ubc_nombre = ubc_nombre;
@@ -28,6 +29,7 @@ public class Agenda {
         this.evt_id = evt_id;
         this.agd_fecha_inicio = agd_fecha_inicio;
         this.agd_fecha_fin = agd_fecha_fin;
+        this.agd_estado = agd_estado;
     }
 
 
@@ -85,5 +87,13 @@ public class Agenda {
 
     public void setAgd_fecha_fin(LocalDateTime agd_fecha_fin) {
         this.agd_fecha_fin = agd_fecha_fin;
+    }
+
+    public String getAgd_estado() {
+        return agd_estado;
+    }
+
+    public void setAgd_estado(String agd_estado) {
+        this.agd_estado = agd_estado;
     }
 }
