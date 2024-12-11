@@ -7,8 +7,6 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.web.DefaultSecurityFilterChain;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 
-
-
 @Configuration
 @EnableWebSecurity
 public class AuthorizeUrlsSecurityConfig {
