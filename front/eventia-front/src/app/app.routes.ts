@@ -23,67 +23,66 @@ import { RegisterComponent } from './components/register/register.component';
 // aqui se almacenan todas las rutas utilizados al clickear en botones
 export const routes: Routes = [
     {
-        path:'login', component:LoginComponent,
+        path: 'login', component: LoginComponent,
     },
     {
-        path:'register',component:RegisterComponent,
+        path: 'register', component: RegisterComponent,
     },
     {
-        path:"home", component: HomeComponent,
+        path: 'home', component: HomeComponent,
     },
     {
-        path:'', component: HomeComponent
+        path: '', component: HomeComponent
     },
     {
-        path:"evento", component: DetalleEventoComponent,
+        path: 'evento/:id', component: DetalleEventoComponent,
     },
     {
-        path:'cartera', component:GestionarSaldoComponent,
+        path: 'cartera', component: GestionarSaldoComponent,
     },
     {
-        path:'reservas', component:ReservasComponent,
+        path: 'reservas', component: ReservasComponent,
     },
     {
-        path:'historial', component:HistorialComponent,
+        path: 'historial', component: HistorialComponent,
     },
     {
-        path:'p/organizador',component:OrgEventoComponent,
+        path: 'p/organizador', component: OrgEventoComponent,
     },
     {
-        path:'p/administrador',component:PanelAdministradorComponent,
+        path: 'p/administrador', component: PanelAdministradorComponent,
     },
     {
-        path:'p/administrador/gestion',component:GestionAdminComponent,
+        path: 'p/administrador/gestion', component: GestionAdminComponent,
     },
     {
-        path:'p/administrador/gestion/Evento',component:EventListComponent,
+        path: 'p/administrador/gestion/Evento', component: EventListComponent,
     },
     {
-        path:'p/administrador/gestion/Reservas',component:ReservasListComponent,
+        path: 'p/administrador/gestion/Reservas', component: ReservasListComponent,
     },
     {
-        path:'p/administrador/gestion/Usuarios',component:UsersListComponent,
+        path: 'p/administrador/gestion/Usuarios', component: UsersListComponent,
     },
     {
-        path:'updatepublish',component:UpdatePublishComponent,
+        path: 'updatepublish', component: UpdatePublishComponent,
     },
     {
-        path:'p/administrador/analisis',component:AnalisisAdminComponent,
+        path: 'p/administrador/analisis', component: AnalisisAdminComponent,
     },
     {
-        path:"p/administrador/gestion/ingresos",component:IngresosListComponent,
+        path: 'p/administrador/gestion/ingresos', component: IngresosListComponent,
     },
     {
-        path:"p/administrador/gestion/eventosRate",component:RatedEventsListComponent,
+        path: 'p/administrador/gestion/eventosRate', component: RatedEventsListComponent,
     },
     {
-        path:'p/organizador/comunidad',component:OrgComunidadComponent,
+        path: 'p/organizador/comunidad', component: OrgComunidadComponent,
     },
     {
-        path:'p/organizador/ingresos',component:OrgIngresosComponent,
+        path: 'p/organizador/ingresos', component: OrgIngresosComponent,
     },
     {
-        path:'new-publish',component:NewPublishComponent,
+        path: 'new-publish', component: NewPublishComponent,
     }
-
 ];

@@ -5,39 +5,21 @@
       <tr>
           <!-- Fila de encabezado que define los títulos de cada columna -->
           <th scope="col">#</th>
-          <!-- Columna que muestra un identificador numérico para cada tipo de entrada -->
-          <th scope="col">Tipo de entrada</th>
-          <!-- Columna que describe el tipo de entrada (ejemplo: VIP, Normal) -->
-          <th scope="col">Disponibilidad</th>
-          <!-- Columna que indica cuántas entradas de cada tipo están disponibles -->
+          <th scope="col">Ciudad</th>
+          <th scope="col">Nombre Ubicación</th>
+          <th scope="col">Fecha Inicio</th>
+          <th scope="col">Entradas disponibles</th>
       </tr>
   </thead>
   <tbody>
-      <!-- Cuerpo de la tabla que contiene los datos de las entradas -->
-      <tr>
-          <!-- Primera fila de datos -->
-          <th scope="row">1</th>
-          <!-- Número identificador de la fila -->
-          <td>VIP</td>
-          <!-- Tipo de entrada: VIP -->
-          <td>64</td>
-          <!-- Cantidad de entradas disponibles: 64 -->
-      </tr>
-      <tr>
-          <!-- Segunda fila de datos -->
-          <th scope="row">2</th>
-          <td>Normal</td>
-          <!-- Tipo de entrada: Normal -->
-          <td>44</td>
-          <!-- Cantidad de entradas disponibles: 44 -->
-      </tr>
-      <tr>
-          <!-- Tercera fila de datos -->
-          <th scope="row">3</th>
-          <td>Pobre</td>
-          <!-- Tipo de entrada: Pobre -->
-          <td>1000</td>
-          <!-- Cantidad de entradas disponibles: 1000 -->
+      <!-- Sección del cuerpo de la tabla -->
+      <tr *ngFor="let agenda of agendas; let i = index">
+        <th scope="row">{{ i + 1 }}</th>
+        <td>{{ agenda["ubc_ciudad"] }}</td>
+        <td>{{ agenda["ubc_nombre"] }}</td>
+        <td>{{ agenda["agd_fecha_inicio"] }}</td>
+        <td>{{ agenda["entradas_disponibles"] }}</td>
       </tr>
   </tbody>
+
 </table>

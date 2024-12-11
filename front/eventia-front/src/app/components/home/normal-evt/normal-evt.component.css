@@ -13,3 +13,8 @@
 .cont2{
     align-items: center;
 }
+
+.promedio{
+    position: absolute;
+    right: 0;
+}

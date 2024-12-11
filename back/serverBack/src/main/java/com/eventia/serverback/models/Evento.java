@@ -5,6 +5,7 @@ import java.util.ArrayList;
 public class Evento {
     private int evt_id;
     private int evt_organizador;
+    private String organizador_nombre;
     private String evt_nombre;
     private String evt_descripcion;
     private float evt_precio;
@@ -78,5 +79,13 @@ public class Evento {
 
     public void setPromedioCalificaciones(double promedioCalificaciones) {
         this.promedioCalificaciones = promedioCalificaciones;
+    }
+
+    public String getOrganizador_nombre() {
+        return organizador_nombre;
+    }
+
+    public void setOrganizador_nombre(String organizador_nombre) {
+        this.organizador_nombre = organizador_nombre;
     }
 }

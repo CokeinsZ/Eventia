@@ -96,4 +96,12 @@ public class Agenda {
     public void setAgd_estado(String agd_estado) {
         this.agd_estado = agd_estado;
     }
+
+    public int getEntradas_disponibles() {
+        return entradas_disponibles;
+    }
+
+    public void setEntradas_disponibles(int entradas_disponibles) {
+        this.entradas_disponibles = entradas_disponibles;
+    }
 }
