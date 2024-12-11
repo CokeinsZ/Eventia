@@ -50,7 +50,7 @@ CREATE TABLE `agenda_asientos` (
 
 LOCK TABLES `agenda_asientos` WRITE;
 /*!40000 ALTER TABLE `agenda_asientos` DISABLE KEYS */;
-INSERT INTO `agenda_asientos` (`agd_id`, `ast_id`, `ubc_id`, `estado`) VALUES (1,'A1',1,'libre'),(2,'A2',2,'libre'),(3,'A3',3,'libre'),(4,'A4',4,'libre'),(5,'A5',5,'libre'),(6,'A6',6,'libre'),(7,'A7',7,'libre'),(8,'A8',8,'libre'),(9,'A9',9,'libre'),(10,'A10',10,'libre'),(31,'A4',16,'libre'),(31,'F1A1',16,'libre'),(31,'F1A2',16,'libre'),(31,'F2A1',16,'libre'),(31,'F2A2',16,'libre'),(31,'F3A1',16,'libre'),(31,'F3A2',16,'libre'),(31,'F4A1',16,'libre'),(31,'F4A2',16,'libre'),(31,'F5A1',16,'libre'),(31,'F5A2',16,'libre');
+INSERT INTO `agenda_asientos` VALUES (1,'A1',1,'libre'),(2,'A2',2,'libre'),(3,'A3',3,'libre'),(4,'A4',4,'libre'),(5,'A5',5,'libre'),(6,'A6',6,'libre'),(7,'A7',7,'libre'),(8,'A8',8,'libre'),(9,'A9',9,'libre'),(10,'A10',10,'libre'),(31,'A4',16,'libre'),(31,'F1A1',16,'libre'),(31,'F1A2',16,'libre'),(31,'F2A1',16,'libre'),(31,'F2A2',16,'libre'),(31,'F3A1',16,'libre'),(31,'F3A2',16,'libre'),(31,'F4A1',16,'libre'),(31,'F4A2',16,'libre'),(31,'F5A1',16,'libre'),(31,'F5A2',16,'libre');
 /*!40000 ALTER TABLE `agenda_asientos` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -82,7 +82,7 @@ CREATE TABLE `agendas` (
 
 LOCK TABLES `agendas` WRITE;
 /*!40000 ALTER TABLE `agendas` DISABLE KEYS */;
-INSERT INTO `agendas` (`agd_id`, `ubc_id`, `evt_id`, `agd_fecha_inicio`, `agd_fecha_fin`, `agd_estado`) VALUES (1,1,1,'2023-01-01 10:00:00','2023-01-01 12:00:00','activo'),(2,2,2,'2023-02-01 10:00:00','2023-02-01 12:00:00','activo'),(3,3,3,'2023-03-01 10:00:00','2023-03-01 12:00:00','activo'),(4,4,4,'2023-04-01 10:00:00','2023-04-01 12:00:00','activo'),(5,5,5,'2023-05-01 10:00:00','2023-05-01 12:00:00','activo'),(6,6,6,'2023-06-01 10:00:00','2023-06-01 12:00:00','activo'),(7,7,7,'2023-07-01 10:00:00','2023-07-01 12:00:00','activo'),(8,8,8,'2023-08-01 10:00:00','2023-08-01 12:00:00','activo'),(9,9,9,'2023-09-01 10:00:00','2023-09-01 12:00:00','activo'),(10,10,10,'2023-10-01 10:00:00','2023-10-01 12:00:00','activo'),(31,16,1,'2026-01-01 10:00:00','2026-01-01 11:00:00','activo');
+INSERT INTO `agendas` VALUES (1,1,1,'2023-01-01 10:00:00','2023-01-01 12:00:00','activo'),(2,2,2,'2023-02-01 10:00:00','2023-02-01 12:00:00','activo'),(3,3,3,'2023-03-01 10:00:00','2023-03-01 12:00:00','activo'),(4,4,4,'2023-04-01 10:00:00','2023-04-01 12:00:00','activo'),(5,5,5,'2023-05-01 10:00:00','2023-05-01 12:00:00','activo'),(6,6,6,'2023-06-01 10:00:00','2023-06-01 12:00:00','activo'),(7,7,7,'2023-07-01 10:00:00','2023-07-01 12:00:00','activo'),(8,8,8,'2023-08-01 10:00:00','2023-08-01 12:00:00','activo'),(9,9,9,'2023-09-01 10:00:00','2023-09-01 12:00:00','activo'),(10,10,10,'2023-10-01 10:00:00','2023-10-01 12:00:00','activo'),(31,16,1,'2026-01-01 10:00:00','2026-01-01 11:00:00','activo');
 /*!40000 ALTER TABLE `agendas` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -108,7 +108,7 @@ CREATE TABLE `asientos` (
 
 LOCK TABLES `asientos` WRITE;
 /*!40000 ALTER TABLE `asientos` DISABLE KEYS */;
-INSERT INTO `asientos` (`ast_id`, `ubc_id`) VALUES ('A1',1),('A2',2),('A3',3),('A4',4),('A5',5),('A6',6),('A7',7),('A8',8),('A9',9),('A10',10),('A4',16),('F1A1',16),('F1A2',16),('F2A1',16),('F2A2',16),('F3A1',16),('F3A2',16),('F4A1',16),('F4A2',16),('F5A1',16),('F5A2',16);
+INSERT INTO `asientos` VALUES ('A1',1),('A2',2),('A3',3),('A4',4),('A5',5),('A6',6),('A7',7),('A8',8),('A9',9),('A10',10),('A4',16),('F1A1',16),('F1A2',16),('F2A1',16),('F2A2',16),('F3A1',16),('F3A2',16),('F4A1',16),('F4A2',16),('F5A1',16),('F5A2',16);
 /*!40000 ALTER TABLE `asientos` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
@@ -175,7 +175,7 @@ CREATE TABLE `calificaciones` (
 
 LOCK TABLES `calificaciones` WRITE;
 /*!40000 ALTER TABLE `calificaciones` DISABLE KEYS */;
-INSERT INTO `calificaciones` (`cal_usuario`, `cal_evento`, `cal_comentario`, `cal_num_estrellas`) VALUES (1,1,'Great event!','5'),(2,2,'Good event','4'),(3,3,'Average event','3'),(4,4,'Not bad','4'),(5,5,'Excellent!','5'),(6,6,'Could be better','3'),(7,7,'Loved it','5'),(8,8,'Nice event','4'),(9,9,'Okay','3'),(10,10,'Fantastic','5');
+INSERT INTO `calificaciones` VALUES (1,1,'Great event!','5'),(2,2,'Good event','4'),(3,3,'Average event','3'),(4,4,'Not bad','4'),(5,5,'Excellent!','5'),(6,6,'Could be better','3'),(7,7,'Loved it','5'),(8,8,'Nice event','4'),(9,9,'Okay','3'),(10,10,'Fantastic','5');
 /*!40000 ALTER TABLE `calificaciones` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -199,7 +199,7 @@ CREATE TABLE `categorias` (
 
 LOCK TABLES `categorias` WRITE;
 /*!40000 ALTER TABLE `categorias` DISABLE KEYS */;
-INSERT INTO `categorias` (`cat_id`, `cat_nombre`) VALUES (1,'Music'),(2,'Art'),(3,'Tech'),(4,'Sports'),(5,'Education'),(6,'Health'),(7,'Business'),(8,'Food'),(9,'Travel'),(10,'Fashion');
+INSERT INTO `categorias` VALUES (1,'Music'),(2,'Art'),(3,'Tech'),(4,'Sports'),(5,'Education'),(6,'Health'),(7,'Business'),(8,'Food'),(9,'Travel'),(10,'Fashion');
 /*!40000 ALTER TABLE `categorias` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -226,7 +226,7 @@ CREATE TABLE `evento_categoria` (
 
 LOCK TABLES `evento_categoria` WRITE;
 /*!40000 ALTER TABLE `evento_categoria` DISABLE KEYS */;
-INSERT INTO `evento_categoria` (`evt_id`, `cat_id`) VALUES (1,1),(2,2),(3,3),(4,4),(5,5),(6,6),(7,7),(8,8),(9,9),(10,10);
+INSERT INTO `evento_categoria` VALUES (1,1),(2,2),(3,3),(4,4),(5,5),(6,6),(7,7),(8,8),(9,9),(10,10);
 /*!40000 ALTER TABLE `evento_categoria` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -255,7 +255,7 @@ CREATE TABLE `eventos` (
 
 LOCK TABLES `eventos` WRITE;
 /*!40000 ALTER TABLE `eventos` DISABLE KEYS */;
-INSERT INTO `eventos` (`evt_id`, `evt_organizador`, `evt_nombre`, `evt_descripcion`, `evt_precio`) VALUES (1,3,'Event 1','Description 1',50),(2,3,'Event 2','Description 2',60),(3,4,'Event 3','Description 3',70),(4,4,'Event 4','Description 4',80),(5,5,'Event 5','Description 5',90),(6,5,'Event 6','Description 6',100),(7,6,'Event 7','Description 7',110),(8,6,'Event 8','Description 8',120),(9,7,'Event 9','Description 9',130),(10,7,'Event 10','Description 10',140);
+INSERT INTO `eventos` VALUES (1,3,'Event 1','Description 1',50),(2,3,'Event 2','Description 2',60),(3,4,'Event 3','Description 3',70),(4,4,'Event 4','Description 4',80),(5,5,'Event 5','Description 5',90),(6,5,'Event 6','Description 6',100),(7,6,'Event 7','Description 7',110),(8,6,'Event 8','Description 8',120),(9,7,'Event 9','Description 9',130),(10,7,'Event 10','Description 10',140);
 /*!40000 ALTER TABLE `eventos` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -284,7 +284,7 @@ CREATE TABLE `recargas` (
 
 LOCK TABLES `recargas` WRITE;
 /*!40000 ALTER TABLE `recargas` DISABLE KEYS */;
-INSERT INTO `recargas` (`rec_id`, `usr_id`, `rec_fecha`, `rec_monto`, `rec_estado`) VALUES (1,1,'2023-01-01 08:00:00',100,'aprobada'),(2,2,'2023-02-01 08:00:00',200,'aprobada'),(3,3,'2023-03-01 08:00:00',300,'aprobada'),(4,4,'2023-04-01 08:00:00',400,'aprobada'),(5,5,'2023-05-01 08:00:00',500,'aprobada'),(6,6,'2023-06-01 08:00:00',600,'aprobada'),(7,7,'2023-07-01 08:00:00',700,'aprobada'),(8,8,'2023-08-01 08:00:00',800,'aprobada'),(9,9,'2023-09-01 08:00:00',900,'aprobada'),(10,10,'2023-10-01 08:00:00',1000,'aprobada');
+INSERT INTO `recargas` VALUES (1,1,'2023-01-01 08:00:00',100,'aprobada'),(2,2,'2023-02-01 08:00:00',200,'aprobada'),(3,3,'2023-03-01 08:00:00',300,'aprobada'),(4,4,'2023-04-01 08:00:00',400,'aprobada'),(5,5,'2023-05-01 08:00:00',500,'aprobada'),(6,6,'2023-06-01 08:00:00',600,'aprobada'),(7,7,'2023-07-01 08:00:00',700,'aprobada'),(8,8,'2023-08-01 08:00:00',800,'aprobada'),(9,9,'2023-09-01 08:00:00',900,'aprobada'),(10,10,'2023-10-01 08:00:00',1000,'aprobada');
 /*!40000 ALTER TABLE `recargas` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -318,7 +318,7 @@ CREATE TABLE `reservas` (
 
 LOCK TABLES `reservas` WRITE;
 /*!40000 ALTER TABLE `reservas` DISABLE KEYS */;
-INSERT INTO `reservas` (`rsv_id`, `rsv_usuario`, `rsv_agenda`, `rsv_fecha`, `rsv_asiento`, `rsv_estado`) VALUES (1,1,1,'2023-01-01 09:00:00','A1','confirmada'),(2,2,2,'2023-02-01 09:00:00','A2','confirmada'),(3,3,3,'2023-03-01 09:00:00','A3','confirmada'),(4,4,4,'2023-04-01 09:00:00','A4','confirmada'),(5,5,5,'2023-05-01 09:00:00','A5','confirmada'),(6,6,6,'2023-06-01 09:00:00','A6','confirmada'),(7,7,7,'2023-07-01 09:00:00','A7','confirmada'),(8,8,8,'2023-08-01 09:00:00','A8','confirmada'),(9,9,9,'2023-09-01 09:00:00','A9','confirmada'),(10,10,10,'2023-10-01 09:00:00','A10','confirmada');
+INSERT INTO `reservas` VALUES (1,1,1,'2023-01-01 09:00:00','A1','confirmada'),(2,2,2,'2023-02-01 09:00:00','A2','confirmada'),(3,3,3,'2023-03-01 09:00:00','A3','confirmada'),(4,4,4,'2023-04-01 09:00:00','A4','confirmada'),(5,5,5,'2023-05-01 09:00:00','A5','confirmada'),(6,6,6,'2023-06-01 09:00:00','A6','confirmada'),(7,7,7,'2023-07-01 09:00:00','A7','confirmada'),(8,8,8,'2023-08-01 09:00:00','A8','confirmada'),(9,9,9,'2023-09-01 09:00:00','A9','confirmada'),(10,10,10,'2023-10-01 09:00:00','A10','confirmada');
 /*!40000 ALTER TABLE `reservas` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -343,7 +343,7 @@ CREATE TABLE `roles` (
 
 LOCK TABLES `roles` WRITE;
 /*!40000 ALTER TABLE `roles` DISABLE KEYS */;
-INSERT INTO `roles` (`rol_id`, `rol_nombre`, `rol_descripcion`) VALUES (1,'Admin','Administrator role'),(2,'User','Regular user role'),(3,'Organizer','Event organizer role');
+INSERT INTO `roles` VALUES (1,'Admin','Administrator role'),(2,'User','Regular user role'),(3,'Organizer','Event organizer role');
 /*!40000 ALTER TABLE `roles` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -374,7 +374,7 @@ CREATE TABLE `transacciones` (
 
 LOCK TABLES `transacciones` WRITE;
 /*!40000 ALTER TABLE `transacciones` DISABLE KEYS */;
-INSERT INTO `transacciones` (`trn_id`, `trn_usuario`, `trn_reserva`, `trn_fecha`, `trn_tipo`, `trn_saldo_anterior`, `trn_saldo_nuevo`) VALUES (1,1,1,'2023-01-01 09:30:00','compra',100,50),(2,2,2,'2023-02-01 09:30:00','compra',200,140),(3,3,3,'2023-03-01 09:30:00','compra',300,230),(4,4,4,'2023-04-01 09:30:00','compra',400,320),(5,5,5,'2023-05-01 09:30:00','compra',500,410),(6,6,6,'2023-06-01 09:30:00','compra',600,500),(7,7,7,'2023-07-01 09:30:00','compra',700,590),(8,8,8,'2023-08-01 09:30:00','compra',800,680),(9,9,9,'2023-09-01 09:30:00','compra',900,770),(10,10,10,'2023-10-01 09:30:00','compra',1000,860);
+INSERT INTO `transacciones` VALUES (1,1,1,'2023-01-01 09:30:00','compra',100,50),(2,2,2,'2023-02-01 09:30:00','compra',200,140),(3,3,3,'2023-03-01 09:30:00','compra',300,230),(4,4,4,'2023-04-01 09:30:00','compra',400,320),(5,5,5,'2023-05-01 09:30:00','compra',500,410),(6,6,6,'2023-06-01 09:30:00','compra',600,500),(7,7,7,'2023-07-01 09:30:00','compra',700,590),(8,8,8,'2023-08-01 09:30:00','compra',800,680),(9,9,9,'2023-09-01 09:30:00','compra',900,770),(10,10,10,'2023-10-01 09:30:00','compra',1000,860);
 /*!40000 ALTER TABLE `transacciones` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -401,7 +401,7 @@ CREATE TABLE `ubicaciones` (
 
 LOCK TABLES `ubicaciones` WRITE;
 /*!40000 ALTER TABLE `ubicaciones` DISABLE KEYS */;
-INSERT INTO `ubicaciones` (`ubc_id`, `ubc_nombre`, `ubc_ciudad`, `ubc_direccion`, `ubc_capacidad`) VALUES (1,'Location 1','City 1','Address 1',1),(2,'Location 2','City 2','Address 2',1),(3,'Location 3','City 3','Address 3',1),(4,'Location 4','City 4','Address 4',1),(5,'Location 5','City 5','Address 5',1),(6,'Location 6','City 6','Address 6',1),(7,'Location 7','City 7','Address 7',1),(8,'Location 8','City 8','Address 8',1),(9,'Location 9','City 9','Address 9',1),(10,'Location 10','City 10','Address 10',1),(13,'Prueba','ChupameEstePenco','Allá, arribita de allá abajo',10),(14,'Prueba','ChupameEstePenco','Allá, arribita de allá abajo',10),(15,'Prueba','ChupameEstePenco','Allá, arribita de allá abajo',10),(16,'Prueba','ChupameEstePenco','Allá, arribita de allá abajo',11);
+INSERT INTO `ubicaciones` VALUES (1,'Location 1','City 1','Address 1',1),(2,'Location 2','City 2','Address 2',1),(3,'Location 3','City 3','Address 3',1),(4,'Location 4','City 4','Address 4',1),(5,'Location 5','City 5','Address 5',1),(6,'Location 6','City 6','Address 6',1),(7,'Location 7','City 7','Address 7',1),(8,'Location 8','City 8','Address 8',1),(9,'Location 9','City 9','Address 9',1),(10,'Location 10','City 10','Address 10',1),(13,'Prueba','ChupameEstePenco','Allá, arribita de allá abajo',10),(14,'Prueba','ChupameEstePenco','Allá, arribita de allá abajo',10),(15,'Prueba','ChupameEstePenco','Allá, arribita de allá abajo',10),(16,'Prueba','ChupameEstePenco','Allá, arribita de allá abajo',11);
 /*!40000 ALTER TABLE `ubicaciones` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -439,7 +439,7 @@ CREATE TABLE `usuarios` (
 
 LOCK TABLES `usuarios` WRITE;
 /*!40000 ALTER TABLE `usuarios` DISABLE KEYS */;
-INSERT INTO `usuarios` (`usr_id`, `usr_correo`, `usr_contrasena`, `usr_saldo`, `usr_nombre1`, `usr_nombre2`, `usr_apellido1`, `usr_apellido2`, `usr_telefono`, `usr_cedula`, `usr_rol`, `usr_estado`) VALUES (1,'user1@example.com','password1',100,'John','A','Doe','B','1234567890','1234567890',1,'activo'),(2,'user2@example.com','password2',200,'Jane','B','Smith','C','0987654321','0987654321',1,'activo'),(3,'user3@example.com','password3',300,'Alice','C','Johnson','D','1122334455','1122334455',2,'activo'),(4,'user4@example.com','password4',400,'Bob','D','Brown','E','2233445566','2233445566',2,'activo'),(5,'user5@example.com','password5',500,'Charlie','E','Davis','F','3344556677','3344556677',2,'activo'),(6,'user6@example.com','password6',600,'David','F','Miller','G','4455667788','4455667788',2,'activo'),(7,'user7@example.com','password7',700,'Eve','G','Wilson','H','5566778899','5566778899',2,'activo'),(8,'user8@example.com','password8',800,'Frank','H','Moore','I','6677889900','6677889900',3,'activo'),(9,'user9@example.com','password9',900,'Grace','I','Taylor','J','7788990011','7788990011',3,'activo'),(10,'user10@example.com','password10',1000,'Hank','J','Anderson','K','8899001122','8899001122',3,'activo');
+INSERT INTO `usuarios` VALUES (1,'user1@example.com','password1',100,'John','A','Doe','B','1234567890','1234567890',1,'activo'),(2,'user2@example.com','password2',200,'Jane','B','Smith','C','0987654321','0987654321',1,'activo'),(3,'user3@example.com','password3',300,'Alice','C','Johnson','D','1122334455','1122334455',2,'activo'),(4,'user4@example.com','password4',400,'Bob','D','Brown','E','2233445566','2233445566',2,'activo'),(5,'user5@example.com','password5',500,'Charlie','E','Davis','F','3344556677','3344556677',2,'activo'),(6,'user6@example.com','password6',600,'David','F','Miller','G','4455667788','4455667788',2,'activo'),(7,'user7@example.com','password7',700,'Eve','G','Wilson','H','5566778899','5566778899',2,'activo'),(8,'user8@example.com','password8',800,'Frank','H','Moore','I','6677889900','6677889900',3,'activo'),(9,'user9@example.com','password9',900,'Grace','I','Taylor','J','7788990011','7788990011',3,'activo'),(10,'user10@example.com','password10',1000,'Hank','J','Anderson','K','8899001122','8899001122',3,'activo');
 /*!40000 ALTER TABLE `usuarios` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -460,4 +460,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-12-11 15:30:55
+-- Dump completed on 2024-12-11 15:45:42
