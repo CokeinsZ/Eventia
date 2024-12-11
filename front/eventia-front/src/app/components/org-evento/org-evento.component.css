@@ -11,3 +11,6 @@
 .cont-coments{
     justify-content: center;
 }
+.contenedor{
+    flex-direction: column;
+}

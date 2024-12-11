@@ -8,28 +8,40 @@
         <thead>
           <tr>
             <th scope="col">#</th>
-            <th scope="col">First</th>
-            <th scope="col">Last</th>
-            <th scope="col">Handle</th>
+            <th scope="col">Nombre del evento</th>
+            <th scope="col">Info del evento</th>
+            <th scope="col">Operaciones</th>
           </tr>
         </thead>
         <tbody>
           <tr>
             <th scope="row">1</th>
-            <td>Reserva 1</td>
-            <td><app-info-reserva/></td><!--este componente almacenara de forma ordenada todo lo que nos interese saber acerca del evento-->
+            <td><app-info-reserva title={{title[0]}} ></app-info-reserva></td>
+            <td><app-info-reserva descriptions={{descriptions[0]}}></app-info-reserva></td><!--este componente almacenara de forma ordenada todo lo que nos interese saber acerca del evento-->
             <td><app-opt-reserva/></td><!--aqui se almacenaran un boton para ir al evento en cuestion y otro para eliminarlo-->
           </tr>
           <tr>
             <th scope="row">2</th>
-            <td>Reserva 1</td>
-            <td><app-info-reserva/></td>
+            <td><app-info-reserva title={{title[1]}}></app-info-reserva></td>
+            <td><app-info-reserva descriptions={{descriptions[1]}}></app-info-reserva></td>
             <td><app-opt-reserva/></td>
           </tr>
           <tr>
             <th scope="row">3</th>
-            <td >Reserva 1</td>
-            <td><app-info-reserva/></td>
+            <td ><app-info-reserva title={{title[2]}}></app-info-reserva></td>
+            <td><app-info-reserva descriptions={{descriptions[2]}}></app-info-reserva></td>
+            <td><app-opt-reserva/></td>
+          </tr>
+          <tr>
+            <th scope="row">4</th>
+            <td ><app-info-reserva title={{title[3]}}></app-info-reserva></td>
+            <td><app-info-reserva descriptions={{descriptions[3]}}></app-info-reserva></td>
+            <td><app-opt-reserva/></td>
+          </tr>
+          <tr>
+            <th scope="row">5</th>
+            <td ><app-info-reserva title={{title[4]}}></app-info-reserva></td>
+            <td><app-info-reserva descriptions={{descriptions[4]}}></app-info-reserva></td>
             <td><app-opt-reserva/></td>
           </tr>
         </tbody>

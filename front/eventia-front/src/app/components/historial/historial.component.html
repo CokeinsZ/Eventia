@@ -14,9 +14,9 @@
         <tr>
           <!-- Encabezados de la tabla -->
           <th scope="col">#</th>
-          <th scope="col">First</th>
-          <th scope="col">Last</th>
-          <th scope="col">Handle</th>
+          <th scope="col">Evento asistido</th>
+          <th scope="col">Informacion del evento</th>
+          <th scope="col">Opciones</th>
         </tr>
       </thead>
       <tbody>
@@ -24,24 +24,24 @@
         <tr>
           <th scope="row">1</th>
           <!-- Nombre de la reserva -->
-          <td>Reserva 1</td>
+          <td><app-info-opt title={{title[0]}}></app-info-opt> </td>
           <!-- Componente personalizado para información del evento -->
-          <td><app-info-opt/></td>
+          <td><app-info-opt descriptions={{descriptions[0]}}></app-info-opt></td>
           <!-- Componente personalizado para valoración del evento -->
           <td><app-val-opt/></td>
         </tr>
         <!-- Fila de reserva 2 -->
         <tr>
           <th scope="row">2</th>
-          <td>Reserva 1</td>
-          <td><app-info-opt/></td>
+          <td><app-info-opt title={{title[1]}}></app-info-opt></td>
+          <td><app-info-opt descriptions={{descriptions[1]}}></app-info-opt></td>
           <td><app-val-opt/></td>
         </tr>
         <!-- Fila de reserva 3 -->
         <tr>
           <th scope="row">3</th>
-          <td>Reserva 1</td>
-          <td><app-info-opt/></td>
+          <td><app-info-opt title={{title[2]}}></app-info-opt></td>
+          <td><app-info-opt descriptions={{descriptions[2]}}></app-info-opt></td>
           <td><app-val-opt/></td>
         </tr>
       </tbody>
