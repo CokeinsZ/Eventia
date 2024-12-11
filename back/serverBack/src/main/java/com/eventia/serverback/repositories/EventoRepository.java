@@ -19,11 +19,12 @@ public class EventoRepository {
     }
 
     public ArrayList<Evento> getEventos(int pagina) {
-        String sql = "SELECT e.*, c.cat_nombre, AVG(cal.cal_num_estrellas) as promedio_calificaciones FROM eventos as e " +
+        String sql = "SELECT e.*, u.usr_nombre1 as nombre_organizador, u.usr_apellido1 as apellido_organizador, c.cat_nombre, AVG(cal.cal_num_estrellas) as promedio_calificaciones FROM eventos as e " +
+                "LEFT JOIN usuarios u ON e.evt_organizador = u.usr_id " +
                 "LEFT JOIN evento_categoria as ec ON e.evt_id = ec.evt_id " +
                 "LEFT JOIN categorias as c ON ec.cat_id = c.cat_id " +
                 "LEFT JOIN calificaciones as cal ON cal.cal_evento = e.evt_id " +
-                "GROUP BY cal.cal_evento, e.evt_id, ec.evt_id, c.cat_nombre " +
+                "GROUP BY cal.cal_evento, e.evt_id, ec.evt_id, c.cat_nombre, u.usr_id " +
                 "LIMIT 10 OFFSET " + (pagina - 1) * 10;
         ArrayList<Evento> eventos = new ArrayList<>();
         try {
@@ -84,20 +85,27 @@ public class EventoRepository {
         evento.setEvt_descripcion(rs.getString("evt_descripcion"));
         evento.setEvt_precio(rs.getFloat("evt_precio"));
         evento.setPromedioCalificaciones(rs.getFloat("promedio_calificaciones"));
-
+        evento.setOrganizador_nombre(rs.getString("nombre_organizador") + " " + rs.getString("apellido_organizador"));
         return evento;
     }
 
     public Evento getEventoById(int id) {
-        String sql = "SELECT * FROM eventos WHERE evt_id = ?";
+        String sql = "SELECT e.*, u.usr_nombre1 as nombre_organizador, u.usr_apellido1 as apellido_organizador, c.cat_nombre, AVG(cal.cal_num_estrellas) as promedio_calificaciones FROM eventos as e " +
+                "LEFT JOIN usuarios u ON e.evt_organizador = u.usr_id " +
+                "LEFT JOIN evento_categoria as ec ON e.evt_id = ec.evt_id " +
+                "LEFT JOIN categorias as c ON ec.cat_id = c.cat_id " +
+                "LEFT JOIN calificaciones as cal ON cal.cal_evento = e.evt_id " +
+                "WHERE e.evt_id = ? " +
+                "GROUP BY cal.cal_evento, e.evt_id, ec.evt_id, c.cat_nombre, u.usr_id ";
+
         Evento evento = null;
         try {
-            PreparedStatement preparedStatement = jdbcTemplate.getDataSource().getConnection().prepareStatement(sql);
+            PreparedStatement preparedStatement = jdbcTemplate.getDataSource().getConnection().prepareStatement(sql, ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE);;
             preparedStatement.setInt(1, id);
             ResultSet resultSet = preparedStatement.executeQuery();
 
-            if (resultSet.next()) {
-                evento = construirEvento(resultSet);
+            if (resultSet.isBeforeFirst()) {
+                evento = asociarCategoriasEventos(resultSet).getFirst();
             }
 
             resultSet.close();

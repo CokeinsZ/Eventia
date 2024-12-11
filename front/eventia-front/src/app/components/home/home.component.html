@@ -13,57 +13,58 @@
         </div>
         <div class="row justify-content-center d-flex">
           <div class="row justify-content-center d-flex">
+
             <div *ngIf="eventos.length > 0" class="col-5 bg-primary-subtle">
-              <a href="evento">
+              <a [href]="'evento/' + eventos[0]['evt_id']">
                 <app-normal-evt [evento]="eventos[0]"></app-normal-evt>
               </a>
             </div>
             <div *ngIf="eventos.length > 1" class="col-5 bg-primary-subtle">
-              <a href="evento">
+              <a [href]="'evento/' + eventos[1]['evt_id']">
                 <app-normal-evt [evento]="eventos[1]"></app-normal-evt>
               </a>
             </div>
             <div *ngIf="eventos.length > 2" class="col-5 bg-primary-subtle">
-              <a href="evento">
+              <a [href]="'evento/' + eventos[2]['evt_id']">
                 <app-normal-evt [evento]="eventos[2]"></app-normal-evt>
               </a>
             </div>
             <div *ngIf="eventos.length > 3" class="col-5 bg-primary-subtle">
-              <a href="evento">
+              <a [href]="'evento/' + eventos[3]['evt_id']">
                 <app-normal-evt [evento]="eventos[3]"></app-normal-evt>
               </a>
             </div>
             <div *ngIf="eventos.length > 4" class="col-5 bg-primary-subtle">
-              <a href="evento">
+              <a [href]="'evento/' + eventos[4]['evt_id']">
                 <app-normal-evt [evento]="eventos[4]"></app-normal-evt>
               </a>
             </div>
             <div *ngIf="eventos.length > 5" class="col-5 bg-primary-subtle">
-              <a href="evento">
+              <a [href]="'evento/' + eventos[5]['evt_id']">
                 <app-normal-evt [evento]="eventos[5]"></app-normal-evt>
               </a>
             </div>
             <div *ngIf="eventos.length > 6" class="col-5 bg-primary-subtle">
-              <a href="evento">
+              <a [href]="'evento/' + eventos[6]['evt_id']">
                 <app-normal-evt [evento]="eventos[6]"></app-normal-evt>
               </a>
             </div>
             <div *ngIf="eventos.length > 7" class="col-5 bg-primary-subtle">
-              <a href="evento">
+              <a [href]="'evento/' + eventos[7]['evt_id']">
                 <app-normal-evt [evento]="eventos[7]"></app-normal-evt>
               </a>
             </div>
             <div *ngIf="eventos.length > 8" class="col-5 bg-primary-subtle">
-              <a href="evento">
+              <a [href]="'evento/' + eventos[8]['evt_id']">
                 <app-normal-evt [evento]="eventos[8]"></app-normal-evt>
               </a>
             </div>
             <div *ngIf="eventos.length > 9" class="col-5 bg-primary-subtle">
-              <a href="evento">
+              <a [href]="'evento/' + eventos[9]['evt_id']">
                 <app-normal-evt [evento]="eventos[9]"></app-normal-evt>
               </a>
             </div>
+
           </div>
-          
       </div>
 </div>

@@ -8,7 +8,7 @@
             <!-- Contenedor interno para organizar el título y detalles del evento -->
             <div class="cont2 d-flex">
                 <!-- Subcontenedor que utiliza flexbox para alinear elementos -->
-                <h1 class="float-start">Titulo del Evento</h1>
+                <h1 class="float-start">{{evento["evt_nombre"]}}</h1>
                 <!-- Título principal del evento -->
             </div>
             <div class="container bg-light">
@@ -37,7 +37,7 @@
         <!-- Título de la sección de descripción -->
         <h2 class="d-text text-break">
             <!-- Descripción detallada del evento. La clase "text-break" asegura que el texto largo se ajuste adecuadamente -->
-            aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+            {{evento["evt_descripcion"]}}
         </h2>
     </div>
     <div class="responsable d-flex mb-3">
@@ -48,7 +48,7 @@
             <!-- Subcontenedor para los datos del responsable -->
             <h2 class="font-p">Responsable</h2>
             <!-- Etiqueta que identifica al responsable -->
-            <h3 class="font-p">nombre del Responsable</h3>
+            <h3 class="font-p">{{evento["organizador_nombre"]}}</h3>
             <!-- Nombre del responsable del evento -->
         </div>
     </div>
