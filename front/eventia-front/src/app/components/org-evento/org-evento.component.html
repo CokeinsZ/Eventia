@@ -1,28 +1,59 @@
 <div class="d-flex">
     <app-perfil-organizador/>
-    <div class="d-flex">
-        <div>
-            <h1>Eventos</h1>
-            <div class="cont-evt d-flex">
-                <img src="banner.jpg" alt="banner-img" class="banner-img rounded img-fluid float-start">
-                <h3>Nombre del Evento</h3>
-            </div>
-        </div>
-        <div>
-            <h2 class= "col-3">fecha</h2>
-            <h3 class="text">fecha</h3>
-        </div>
-        <div>
-            <h2>valoracion</h2>
-            <div class=" cont-val d-flex">
-                <app-verify-stars/>
-                <h3>({{cont_val}})</h3>
-            </div>
-        </div>
-        <div>
-            <h2>Comentarios</h2>
-            <h3 class="cont-coments">{{cont_comentarios}}</h3>
-        </div>
-    </div>
+    <table class="table">
+        <thead>
+          <tr>
+            <!-- Encabezados de la tabla -->
+            <th scope="col">#</th>
+            <th scope="col">Evento</th>
+            <th scope="col">Fecha</th>
+            <th scope="col">Comentarios</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Fila de reserva 1 -->
+          <tr>
+            <th scope="row">1</th>
+            <!-- Nombre de la reserva -->
+            <td>
+                <div class="cont-evt d-flex">
+                    <img src="banner.jpg" alt="banner-img" class="banner-img rounded img-fluid float-start">
+                    <h3><app-print-evento title={{title[0]}}></app-print-evento></h3>
+                </div>
+            </td>
+            <!-- Componente personalizado para información del evento -->
+            <td><app-print-evento dates={{dates[0]}}></app-print-evento></td>
+            <!-- Componente personalizado para valoración del evento -->
+            <td><app-print-evento numbers={{numbers[0]}}></app-print-evento></td>
+          </tr>
+          <!-- Fila de reserva 2 -->
+          <tr>
+            <th scope="row">2</th>
+            <td>
+                <div class="cont-evt d-flex">
+                    <img src="banner.jpg" alt="banner-img" class="banner-img rounded img-fluid float-start">
+                    <h3><app-print-evento title={{title[1]}}></app-print-evento></h3>
+                </div>
+            </td>
+            <td><app-print-evento dates={{dates[1]}}></app-print-evento></td>
+            <td><app-print-evento numbers={{numbers[1]}}></app-print-evento></td>
+          </tr>
+          <!-- Fila de reserva 3 -->
+          <tr>
+            <th scope="row">3</th>
+            <td>
+                <div class="cont-evt d-flex">
+                    <img src="banner.jpg" alt="banner-img" class="banner-img rounded img-fluid float-start">
+                    <h3><app-print-evento title={{title[2]}}></app-print-evento></h3>
+                </div>
+            </td>
+            <td><app-print-evento dates={{dates[2]}}></app-print-evento></td>
+            <td><app-print-evento numbers={{numbers[2]}}></app-print-evento></td>
+          </tr>
+        </tbody>
+      </table>
+    
+    
+    
 </div>
 
