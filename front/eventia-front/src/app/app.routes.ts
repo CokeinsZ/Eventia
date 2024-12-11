@@ -19,6 +19,8 @@ import { IngresosListComponent } from './components/panel-administrador/analisis
 import { RatedEventsListComponent } from './components/panel-administrador/analisis-admin/rated-events-list/rated-events-list.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
+import { CargarSaldoComponent } from './components/cargar-saldo/cargar-saldo.component';
+import { RetirarSaldoComponent } from './components/retirar-saldo/retirar-saldo.component';
 
 // aqui se almacenan todas las rutas utilizados al clickear en botones
 export const routes: Routes = [
@@ -27,6 +29,12 @@ export const routes: Routes = [
     },
     {
         path: 'register', component: RegisterComponent,
+    },
+    {
+        path: 'recargar', component:CargarSaldoComponent,
+    },
+    {
+        path:'retirar',component:RetirarSaldoComponent,
     },
     {
         path: 'home', component: HomeComponent,

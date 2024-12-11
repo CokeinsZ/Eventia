@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { PerfilOrganizadorComponent } from '../perfil-organizador/perfil-organizador.component';
+import { ContValoresComponent } from './cont-valores/cont-valores.component';
 import { PrintOrgIngresosArraysComponent } from './print-org-ingresos-arrays/print-org-ingresos-arrays.component';
 import { UsuarioService } from '../../servicios/usuarios/usuario.service';
 import { EventoService } from '../../servicios/eventos/evento.service';
