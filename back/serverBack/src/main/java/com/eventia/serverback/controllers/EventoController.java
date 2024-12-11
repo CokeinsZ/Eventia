@@ -29,6 +29,11 @@ public class EventoController {
         return eventoService.getEventos(pagina);
     }
 
+    @GetMapping("/organizador/{id}")
+    public ArrayList<Evento> listarEventosOrganizador(@PathVariable int id) {
+        return eventoService.getEventosOrganizador(id);
+    }
+
     @GetMapping("/categorias")
     public ArrayList<Categoria> listarCategorias() {
         return categoriaService.getCategorias();

@@ -1,50 +1,58 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { PerfilOrganizadorComponent } from '../perfil-organizador/perfil-organizador.component';
 import { VerifyStarsComponent } from '../verify-stars/verify-stars.component';
 import { PrintEventoComponent } from '../../print-evento/print-evento.component';
+import { EventoService } from '../../servicios/eventos/evento.service';
+
+interface Evento {
+  evt_id: number,
+  evt_nombre: string,
+  evt_descripcion: string,
+  evt_precio: number,
+  categorias: [{cat_nombre: string}],
+  evt_organizador: number,
+  organizador_nombre: string,
+  promedioCalificaciones: number
+}
 
 @Component({
   selector: 'app-org-evento',
-  imports: [PerfilOrganizadorComponent,VerifyStarsComponent,PrintEventoComponent],
+  imports: [PerfilOrganizadorComponent,VerifyStarsComponent,PrintEventoComponent, CommonModule],
   templateUrl: './org-evento.component.html',
   styleUrl: './org-evento.component.css'
 })
-export class OrgEventoComponent {
- cont_val=0;
- cont_comentarios=0;
- title: string[] = [
-  "Conferencia de Tecnología",
-  "Festival de Música",
-  "Exposición de Arte Contemporáneo",
-  "Maratón Internacional",
-  "Feria de Emprendedores",
-  "Cine al Aire Libre",
-  "Concierto de Rock",
-  "Exhibición de Autos Clásicos",
-  "Torneo de Videojuegos",
-  "Feria de Comida Internacional",
-  "Festival de Cine Independiente",
-  "Charla sobre Inteligencia Artificial",
-  "Evento de Networking Empresarial",
-  "Festival de Comedia",
-  "Competencia de Robótica",
-  "Exposición de Fotografía",
-  "Seminario de Marketing Digital",
-  "Feria de Empleo",
-  "Festival de Danza Folclórica",
-  "Concurso de Fotografía Nocturna"
-];
-dates: string[] = [
-  "2024-12-10", "2024-12-11", "2024-12-12", "2024-12-13", "2024-12-14",
-  "2024-12-15", "2024-12-16", "2024-12-17", "2024-12-18", "2024-12-19",
-  "2024-12-20", "2024-12-21", "2024-12-22", "2024-12-23", "2024-12-24",
-  "2024-12-25", "2024-12-26", "2024-12-27", "2024-12-28", "2024-12-29"
-];
+export class OrgEventoComponent implements OnInit {
 
-numbers: number[] = [
-  34, 87, 21, 56, 99, 14, 72, 48, 63, 8,
-  90, 26, 77, 59, 41, 53, 11, 67, 30, 82
-];
+  idOrganizador: string = "3";
+  eventos: Evento[] = [
+    {
+      evt_id: 1,
+      evt_nombre: "",
+      evt_descripcion: "",
+      evt_precio: 1,
+      categorias: [{cat_nombre: ""}],
+      evt_organizador: 1,
+      organizador_nombre: "",
+      promedioCalificaciones: 1
+    }
+  ];
 
+  numeroAgendas: string[] = [""];
 
+  constructor(private eventosService: EventoService) { }
+
+  ngOnInit(): void {
+    this.eventosService.getEventosOrganizador(this.idOrganizador).subscribe(data => {
+      this.eventos = data;
+      this.eventos.forEach(evento => {
+        this.eventosService.getAgendas(evento['evt_id'].toString()).subscribe(data => {
+          this.numeroAgendas[evento['evt_id']] = data.length;
+
+          console.log(this.numeroAgendas);
+          console.log(this.eventos);
+        });
+      });
+    });
+  }
 }

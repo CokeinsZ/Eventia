@@ -6,49 +6,22 @@
             <!-- Encabezados de la tabla -->
             <th scope="col">#</th>
             <th scope="col">Evento</th>
-            <th scope="col">Fecha</th>
-            <th scope="col">Comentarios</th>
+            <th scope="col">NumeroAgendas</th>
+            <th scope="col">PromedioCalificaciones</th>
           </tr>
         </thead>
         <tbody>
-          <!-- Fila de reserva 1 -->
-          <tr>
-            <th scope="row">1</th>
-            <!-- Nombre de la reserva -->
+          <!-- Filas de la tabla -->
+          <tr *ngFor="let evento of eventos; let i = index">
+            <th scope="row">{{ i + 1 }}</th>
             <td>
-                <div class="cont-evt d-flex">
-                    <img src="banner.jpg" alt="banner-img" class="banner-img rounded img-fluid float-start">
-                    <h3><app-print-evento title={{title[0]}}></app-print-evento></h3>
-                </div>
+              <div class="cont-evt d-flex">
+                <img src="banner.jpg" alt="banner-img" class="banner-img rounded img-fluid float-start">
+                <h3><app-print-evento [title]="evento['evt_nombre']"></app-print-evento></h3>
+              </div>
             </td>
-            <!-- Componente personalizado para información del evento -->
-            <td><app-print-evento dates={{dates[0]}}></app-print-evento></td>
-            <!-- Componente personalizado para valoración del evento -->
-            <td></td>
-          </tr>
-          <!-- Fila de reserva 2 -->
-          <tr>
-            <th scope="row">2</th>
-            <td>
-                <div class="cont-evt d-flex">
-                    <img src="banner.jpg" alt="banner-img" class="banner-img rounded img-fluid float-start">
-                    <h3><app-print-evento title={{title[1]}}></app-print-evento></h3>
-                </div>
-            </td>
-            <td><app-print-evento dates={{dates[1]}}></app-print-evento></td>
-            <td><app-print-evento numbers={{numbers[1]}}></app-print-evento></td>
-          </tr>
-          <!-- Fila de reserva 3 -->
-          <tr>
-            <th scope="row">3</th>
-            <td>
-                <div class="cont-evt d-flex">
-                    <img src="banner.jpg" alt="banner-img" class="banner-img rounded img-fluid float-start">
-                    <h3><app-print-evento title={{title[2]}}></app-print-evento></h3>
-                </div>
-            </td>
-            <td><app-print-evento dates={{dates[2]}}></app-print-evento></td>
-            <td><app-print-evento numbers={{numbers[2]}}></app-print-evento></td>
+            <td><app-print-evento [agendas]="numeroAgendas[evento['evt_id']]"></app-print-evento></td>
+            <td><app-print-evento [promedio]="evento['promedioCalificaciones']"></app-print-evento></td>
           </tr>
         </tbody>
       </table>

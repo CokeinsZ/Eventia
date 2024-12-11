@@ -38,4 +38,8 @@ public class EventoService {
     public String deleteEvento(int id) {
         return eventoRepository.deleteEvento(id);
     }
+
+    public ArrayList<Evento> getEventosOrganizador(int id) {
+        return eventoRepository.getEventosOrganizador(id);
+    }
 }

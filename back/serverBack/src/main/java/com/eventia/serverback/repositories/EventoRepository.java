@@ -231,4 +231,32 @@ public class EventoRepository {
         return "Error al eliminar el evento";
     }
 
+    public ArrayList<Evento> getEventosOrganizador(int id) {
+        String sql = "SELECT e.*, u.usr_nombre1 as nombre_organizador, u.usr_apellido1 as apellido_organizador, c.cat_nombre, AVG(cal.cal_num_estrellas) as promedio_calificaciones FROM eventos as e " +
+                "LEFT JOIN usuarios u ON e.evt_organizador = u.usr_id " +
+                "LEFT JOIN evento_categoria as ec ON e.evt_id = ec.evt_id " +
+                "LEFT JOIN categorias as c ON ec.cat_id = c.cat_id " +
+                "LEFT JOIN calificaciones as cal ON cal.cal_evento = e.evt_id " +
+                "WHERE e.evt_organizador = ? " +
+                "GROUP BY cal.cal_evento, e.evt_id, ec.evt_id, c.cat_nombre, u.usr_id ";
+
+        ArrayList<Evento> eventos = new ArrayList<>();
+
+        try {
+            PreparedStatement preparedStatement = jdbcTemplate.getDataSource().getConnection().prepareStatement(sql, ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE);
+            preparedStatement.setInt(1, id);
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            if (resultSet.isBeforeFirst()) {
+                eventos = asociarCategoriasEventos(resultSet);
+            }
+
+            resultSet.close();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return eventos;
+    }
 }

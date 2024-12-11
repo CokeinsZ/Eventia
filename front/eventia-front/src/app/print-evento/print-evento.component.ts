@@ -11,6 +11,6 @@ import { OrgIngresosComponent } from '../components/org-ingresos/org-ingresos.co
 })
 export class PrintEventoComponent {
   @Input() title='';
-  @Input() dates='';
-  @Input() numbers='';
+  @Input() agendas='';
+  @Input() promedio: number = 0;
 }

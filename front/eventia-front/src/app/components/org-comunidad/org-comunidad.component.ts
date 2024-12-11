@@ -27,10 +27,10 @@ interface Evento {
   evt_nombre: string,
   evt_descripcion: string,
   evt_precio: number,
-  categoriaa: [{cat_nombre: string}],
+  categorias: [{cat_nombre: string}],
   evt_organizador: number,
   organizador_nombre: string,
-
+  promedio_calificaciones: number
 }
 
 interface Calificacion {
