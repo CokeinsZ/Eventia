@@ -7,6 +7,7 @@
                 Usuarios
             </th>
             <th>Evento</th>
+            <th>Comentarios</th>
             
 
           </tr>
@@ -14,27 +15,45 @@
         <tbody>
           <tr>
             <th>
-              <app-print-users users={{users[0]}}></app-print-users>
+              <div class="d-flex">
+                <img src="profile pic.png" alt="profile icon" class="profile-img">
+                <app-print-user-evt-org users={{users[0]}}></app-print-user-evt-org>
+              </div>
             </th>
             <th scope="row">
-              
+              <app-print-user-evt-org title={{title[0]}}></app-print-user-evt-org>
+            </th>
+            <th>
+              <app-print-user-evt-org comentarios={{comentarios[0]}}></app-print-user-evt-org>
             </th>
 
           </tr>
           <tr>
             <th>
-              <app-print-users users={{users[1]}}></app-print-users>
+              <div class="d-flex">
+                <img src="profile pic.png" alt="profile icon" class="profile-img">
+                <app-print-user-evt-org users={{users[0]}}></app-print-user-evt-org>
+              </div>
             </th>
             <th scope="row">
-              
+              <app-print-user-evt-org title={{title[0]}}></app-print-user-evt-org>
+            </th>
+            <th>
+              <app-print-user-evt-org comentarios={{comentarios[1]}}></app-print-user-evt-org>
             </th>
           </tr>
           <tr>
             <th>
-              <app-print-users users={{users[2]}}></app-print-users>
+              <div class="d-flex">
+                <img src="profile pic.png" alt="profile icon" class="profile-img">
+                <app-print-user-evt-org users={{users[0]}}></app-print-user-evt-org>
+              </div>
             </th>
             <th scope="row">
-              
+              <app-print-user-evt-org title={{title[0]}}></app-print-user-evt-org>
+            </th>
+            <th>
+              <app-print-user-evt-org comentarios={{comentarios[2]}}></app-print-user-evt-org>
             </th>
           </tr>
         </tbody>
