@@ -8,11 +8,36 @@
 </head>
 <body>
     <app-gestion-admin/>
-    <div class="contenedor d-flex">
-        <img src={{profile_pic}} alt="profile img" class="profile-img">
-        <h2>Nombre_de_usuario</h2>
-        <button class="btn btn-ligth"><i class="bi bi-trash-fill pencil"></i></button>
-    </div>
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Nombre de usuario</th>
+            <th scope="col">Fecha de Creacion</th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row"><img src={{profile_pic}} alt="profile img" class="profile-img"></th>
+            <td><app-print-user-list users={{users[0]}}></app-print-user-list></td>
+            <td><app-print-user-list date={{date_Inicio[0]}}></app-print-user-list></td>
+            <td><button class="btn btn-ligth"><i class="bi bi-trash-fill pencil"></i></button></td>
+          </tr>
+          <tr>
+            <th scope="row"><img src={{profile_pic}} alt="profile img" class="profile-img"></th>
+            <td><app-print-user-list users={{users[0]}}></app-print-user-list></td>
+            <td><app-print-user-list date={{date_Inicio[0]}}></app-print-user-list></td>
+            <td><button class="btn btn-ligth"><i class="bi bi-trash-fill pencil"></i></button></td>
+          </tr>
+          <tr>
+            <th scope="row"><img src={{profile_pic}} alt="profile img" class="profile-img"></th>
+            <td ><app-print-user-list users={{users[0]}}></app-print-user-list></td>
+            <td><app-print-user-list date={{date_Inicio[0]}}></app-print-user-list></td>
+            <td><button class="btn btn-ligth"><i class="bi bi-trash-fill pencil"></i></button></td>
+          </tr>
+        </tbody>
+      </table>
 
 </body>
 </html>

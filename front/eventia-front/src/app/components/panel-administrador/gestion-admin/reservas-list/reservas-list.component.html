@@ -8,15 +8,54 @@
 </head>
 <body>
     <app-gestion-admin/>
-    <div class="d-flex">
-        <h2>usuario</h2>
-        <h2>nombre del evento</h2>
-        <h2>Fecha</h2>
-        <h2>Lugar</h2>
-        <button class="btn btn-ligth">
-            <i class="bi bi-trash-fill imagen"></i>
-        </button>
-    </div>
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">usuario</th>
+            <th scope="col">Evento</th>
+            <th scope="col">Fecha</th>
+            <th scope="col">Lugar</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">
+                <app-print-reservas-list users={{users[0]}}></app-print-reservas-list>
+            </th>
+            <td><app-print-reservas-list nom_evento={{nom_evento[0]}}></app-print-reservas-list></td>
+            <td><app-print-reservas-list date={{date[0]}}></app-print-reservas-list></td>
+            <td><app-print-reservas-list place={{place[0]}}></app-print-reservas-list></td>
+            <td>
+                <button class="btn btn-ligth">
+                    <i class="bi bi-trash-fill imagen"></i>
+                </button>
+            </td>
+          </tr>
+          <tr>
+            <th scope="row"><app-print-reservas-list users={{users[0]}}></app-print-reservas-list></th>
+            <td><app-print-reservas-list nom_evento={{nom_evento[0]}}></app-print-reservas-list></td>
+            <td><app-print-reservas-list date={{date[0]}}></app-print-reservas-list></td>
+            <td><app-print-reservas-list place={{place[0]}}></app-print-reservas-list></td>
+            <td>
+                <button class="btn btn-ligth">
+                    <i class="bi bi-trash-fill imagen"></i>
+                </button>
+            </td>
+          </tr>
+          <tr>
+            <th scope="row"><app-print-reservas-list users={{users[0]}}></app-print-reservas-list></th>
+            <td><app-print-reservas-list nom_evento={{nom_evento[0]}}></app-print-reservas-list></td>
+            <td><app-print-reservas-list date={{date[0]}}></app-print-reservas-list></td>
+            <td><app-print-reservas-list place={{place[0]}}></app-print-reservas-list></td>
+            <td>
+                <button class="btn btn-ligth">
+                    <i class="bi bi-trash-fill imagen"></i>
+                </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
 </body>
 </html>
 
