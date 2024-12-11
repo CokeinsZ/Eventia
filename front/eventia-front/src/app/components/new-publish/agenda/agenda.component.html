@@ -12,21 +12,10 @@
         </nav>
         <!-- Lista de lugares con checkboxes -->
         <div class="scroll-container">
-            <label class="d-block">
-                <input type="checkbox" name="lugares" value="1" class="me-2"> First heading
+            <label class="d-block" *ngFor="let lugar of ubicaciones">
+                <input type="checkbox" name="lugares" [value]="lugar['ubc_id']" class="me-2"> {{ lugar['ubc_nombre'] }} {{ lugar['ubc_ciudad'] }}
             </label>
-            <label class="d-block">
-                <input type="checkbox" name="lugares" value="2" class="me-2"> Second heading
-            </label>
-            <label class="d-block">
-                <input type="checkbox" name="lugares" value="3" class="me-2"> Third heading
-            </label>
-            <label class="d-block">
-                <input type="checkbox" name="lugares" value="4" class="me-2"> Fourth heading
-            </label>
-            <label class="d-block">
-                <input type="checkbox" name="lugares" value="5" class="me-2"> Fifth heading
-            </label>
+        
         </div>
     </div>
 </div>

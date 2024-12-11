@@ -26,4 +26,8 @@ export class EventoService {
   getAgendas(idEvento: string): Observable<any> {
     return this.http.get(`${this.url}/${idEvento}/agendas`);
   }
+
+  getCategorias(): Observable<any> {
+    return this.http.get(`${this.url}/categorias`);
+  }
 }
