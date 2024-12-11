@@ -3,7 +3,7 @@ import { EventoService } from '../../servicios/eventos/evento.service';
 import { CommonModule } from '@angular/common';
 import { TablaDisponibilidadComponent } from './tabla-disponibilidad/tabla-disponibilidad.component';
 import { ActivatedRoute } from '@angular/router';
-
+//a
 
 @Component({
   selector: 'app-detalle-evento',

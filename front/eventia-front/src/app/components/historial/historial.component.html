@@ -17,6 +17,7 @@
           <th scope="col">Evento asistido</th>
           <th scope="col">Informacion del evento</th>
           <th scope="col">Opciones</th>
+          <th>comentario</th>
         </tr>
       </thead>
       <tbody>
@@ -29,6 +30,8 @@
           <td><app-info-opt descriptions={{descriptions[0]}}></app-info-opt></td>
           <!-- Componente personalizado para valoración del evento -->
           <td><app-val-opt/></td>
+          <td><input type="text" placeholder="comentario"></td>
+          
         </tr>
         <!-- Fila de reserva 2 -->
         <tr>
@@ -36,6 +39,7 @@
           <td><app-info-opt title={{title[1]}}></app-info-opt></td>
           <td><app-info-opt descriptions={{descriptions[1]}}></app-info-opt></td>
           <td><app-val-opt/></td>
+          <td><input type="text" placeholder="comentario"></td>
         </tr>
         <!-- Fila de reserva 3 -->
         <tr>
@@ -43,6 +47,7 @@
           <td><app-info-opt title={{title[2]}}></app-info-opt></td>
           <td><app-info-opt descriptions={{descriptions[2]}}></app-info-opt></td>
           <td><app-val-opt/></td>
+          <td><input type="text" placeholder="comentario"></td>
         </tr>
       </tbody>
     </table>
