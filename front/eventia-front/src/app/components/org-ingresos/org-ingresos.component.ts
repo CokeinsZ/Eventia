@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { PerfilOrganizadorComponent } from '../perfil-organizador/perfil-organizador.component';
 import { ContValoresComponent } from './cont-valores/cont-valores.component';
-import { ContValoracionesComponent } from "../org-comunidad/cont-valoraciones/cont-valoraciones.component";
 import { PrintOrgIngresosArraysComponent } from './print-org-ingresos-arrays/print-org-ingresos-arrays.component';
 
 @Component({

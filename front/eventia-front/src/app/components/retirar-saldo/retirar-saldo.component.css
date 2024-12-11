@@ -1,0 +1,8 @@
+.barra{
+    background:white;
+    color:black;
+}
+.btn{
+    display: flex;
+    flex-direction: column;
+}
