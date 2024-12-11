@@ -4,7 +4,6 @@ import com.eventia.serverback.models.Reserva;
 import com.eventia.serverback.services.ReservaService;
 import org.springframework.web.bind.annotation.*;
 
-import java.sql.ResultSet;
 import java.util.ArrayList;
 
 @RestController
@@ -17,7 +16,7 @@ public class ReservaController {
     }
 
     @GetMapping("/")
-    public ArrayList<Reserva> getReservasEvt(@RequestBody int idAgenda) {
+    public ArrayList<Reserva> getReservasAgd(@RequestBody int idAgenda) {
         return reservaService.getReservasEvt(idAgenda);
     }
 
@@ -39,6 +38,11 @@ public class ReservaController {
     @DeleteMapping("/{idReserva}")
     public String cancelarReserva(@PathVariable int idReserva) {
         return reservaService.cancelarReserva(idReserva);
+    }
+
+    @GetMapping("/evento/{idEvento}/ingresos")
+    public float getIngresosEvento(@PathVariable int idEvento) {
+        return reservaService.getIngresosEvento(idEvento);
     }
 
 }

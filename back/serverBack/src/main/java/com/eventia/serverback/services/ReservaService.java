@@ -87,4 +87,7 @@ public class ReservaService {
         return response + "\n Reserva cancelada con éxito";
     }
 
+    public float getIngresosEvento(int idEvento) {
+        return reservaRepository.getIngresosEvento(idEvento);
+    }
 }

@@ -179,4 +179,26 @@ public class ReservaRepository {
 
         return "Reserva eliminada";
     }
+
+    public float getIngresosEvento(int idEvento) {
+        String sql = "SELECT SUM(evt_precio) FROM reservas r " +
+                "JOIN agendas a ON r.rsv_agenda = a.agd_id " +
+                "JOIN eventos e ON a.evt_id = e.evt_id " +
+                "WHERE e.evt_id = ? AND (r.rsv_estado = 'confirmada' OR r.rsv_estado = 'completada') ";
+
+        try {
+            PreparedStatement preparedStatement = jdbcTemplate.getDataSource().getConnection().prepareStatement(sql);
+            preparedStatement.setInt(1, idEvento);
+
+            ResultSet resultSet = preparedStatement.executeQuery();
+            if (resultSet.next()) {
+                return resultSet.getFloat(1);
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return 0;
+    }
 }

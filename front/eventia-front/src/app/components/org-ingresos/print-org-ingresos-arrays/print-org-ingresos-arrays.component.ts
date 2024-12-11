@@ -9,5 +9,5 @@ import { OrgIngresosComponent } from '../org-ingresos.component';
 })
 export class PrintOrgIngresosArraysComponent {
   @Input() title='';
-  @Input() ingresos='';
+  @Input() ingresos: number = 0;
 }

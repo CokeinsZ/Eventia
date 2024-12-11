@@ -5,37 +5,16 @@
           <tr>
             <th scope="col">Evento</th>
             <th>Ingresos</th>
-            <th>Opciones</th>
-
           </tr>
         </thead>
         <tbody>
-          <tr>
+          <tr *ngFor="let ingreso of ingresos; let i = index">
             <th>
-              <app-print-org-ingresos-arrays title={{title[0]}}></app-print-org-ingresos-arrays>
+              <app-print-org-ingresos-arrays [title]="title[i]"></app-print-org-ingresos-arrays>
             </th>
             <th>
-              <app-print-org-ingresos-arrays ingresos={{ingresos[0]}}></app-print-org-ingresos-arrays>
+              <app-print-org-ingresos-arrays [ingresos]="ingreso"></app-print-org-ingresos-arrays>
             </th>
-            <th scope="row"><app-cont-valores/></th>
-          </tr>
-          <tr>
-            <th>
-              <app-print-org-ingresos-arrays title={{title[0]}}></app-print-org-ingresos-arrays>
-            </th>
-            <th>
-              <app-print-org-ingresos-arrays ingresos={{ingresos[0]}}></app-print-org-ingresos-arrays>
-            </th>
-            <th scope="row"><app-cont-valores/></th>
-          </tr>
-          <tr>
-            <th>
-              <app-print-org-ingresos-arrays title={{title[0]}}></app-print-org-ingresos-arrays>
-            </th>
-            <th>
-              <app-print-org-ingresos-arrays ingresos={{ingresos[0]}}></app-print-org-ingresos-arrays>
-            </th>
-            <th scope="row"><app-cont-valores/></th>
           </tr>
         </tbody>
       </table>
