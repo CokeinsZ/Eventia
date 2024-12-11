@@ -21,9 +21,12 @@ public class AgendaRepository {
     }
 
     public ArrayList<Agenda> getAgendas(int idEvento) {
-        String sql = "SELECT a.*, u.ubc_nombre, u.ubc_ciudad FROM agendas a " +
+        String sql = "SELECT a.*, u.ubc_nombre, u.ubc_ciudad, COUNT(CASE WHEN agdast.estado = 'libre' THEN 1 END ) as entradas_disponibles " +
+                "FROM agendas a " +
                 "INNER JOIN ubicaciones u ON a.ubc_id = u.ubc_id " +
-                "WHERE a.evt_id = ?";
+                "INNER JOIN agenda_asientos agdast ON a.agd_id = agdast.agd_id " +
+                "WHERE a.evt_id = ? " +
+                "GROUP BY a.agd_id";
         ArrayList<Agenda> agendas = new ArrayList<>();
 
         try {
@@ -42,6 +45,7 @@ public class AgendaRepository {
                         resultSet.getTimestamp("agd_fecha_fin").toLocalDateTime(),
                         resultSet.getString("agd_estado")
                 );
+                agenda.setEntradas_disponibles(resultSet.getInt("entradas_disponibles"));
 
                 agendas.add(agenda);
             }

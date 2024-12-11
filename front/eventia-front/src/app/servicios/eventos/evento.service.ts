@@ -18,4 +18,8 @@ export class EventoService {
   getEvento(id: string): Observable<any> {
     return this.http.get(`${this.url}/${id}`);
   }
+
+  getAgendas(idEvento: string): Observable<any> {
+    return this.http.get(`${this.url}/${idEvento}/agendas`);
+  }
 }

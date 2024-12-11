@@ -11,20 +11,12 @@
                 <h1 class="float-start">{{evento["evt_nombre"]}}</h1>
                 <!-- Título principal del evento -->
             </div>
-            <div class="container bg-light">
-                <!-- Contenedor con fondo claro para la fecha y el lugar del evento -->
-                <h3 class="fecha text-primary">(Fecha)</h3>
-                <!-- Fecha del evento, estilizada con color primario -->
-                <h3 class="evt-place text-secondary">
-                    Lugar del Evento
-                </h3>
-                <!-- Lugar donde se llevará a cabo el evento, estilizado con color secundario -->
-            </div>
+            
             <div class="btn-price-container d-flex">
                 <!-- Contenedor para el botón de compra y el precio, alineados con flexbox -->
                 <button class="btn">Comprar</button>
                 <!-- Botón para iniciar el proceso de compra -->
-                <div class="cont bg-light">Price</div>
+                <div class="cont bg-light">Precio: ${{evento["evt_precio"]}}</div>
                 <!-- Contenedor con fondo claro para mostrar el precio del evento -->
             </div>
         </div>
@@ -52,11 +44,12 @@
             <!-- Nombre del responsable del evento -->
         </div>
     </div>
+
     <div class="entradas-dis justify-content-center">
         <!-- Contenedor que muestra la disponibilidad de entradas, centrado con flexbox -->
         <h1 class="font-p">Disponibilidad de Entradas</h1>
         <!-- Título de la sección de disponibilidad -->
-        <app-tabla-disponibilidad/>
+        <app-tabla-disponibilidad idEvento = {{eventId}}></app-tabla-disponibilidad>
         <!-- Componente que renderiza la tabla de disponibilidad de entradas. Puede ser un componente de framework como Angular, React, etc. -->
     </div>
 </div>
