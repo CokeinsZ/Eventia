@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
+import { AgendaComponent } from './agenda/agenda.component';
 
 @Component({
   selector: 'app-new-publish',
-  imports: [],
+  imports: [AgendaComponent],
   templateUrl: './new-publish.component.html',
   styleUrl: './new-publish.component.css'
 })
