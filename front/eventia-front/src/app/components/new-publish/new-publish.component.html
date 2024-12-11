@@ -14,56 +14,10 @@
             <input class="form-control mb-2" type="Nombre" placeholder="Nombre del evento" aria-label="Nombre">
             <!-- Campo para ingresar la descripción del evento -->
             <input class="form-control mb-2 " type="Nombre" placeholder="Descripcion del evento" aria-label="Nombre">
-
-            <div class="sub-contenedor">
-                <!-- Campo para ingresar la fecha del evento -->
-                <div class="d-flex">
-                    <h4 class="texto-sub-cont">fecha</h4>
-                    <input class="form-control mb-2 " type="Nombre" placeholder="fecha del evento" aria-label="Nombre">
-                </div>
-
-                <!-- Campo para ingresar la capacidad total del evento -->
-                <div class="d-flex">
-                    <h4 class="texto-sub-cont">Capacidad</h4>
-                    <input class="form-control mb-2 " type="Nombre" placeholder="Capacidad Total" aria-label="Nombre">
-                </div>
-
-                <!-- Tabla para mostrar la capacidad y precio de entradas -->
-                <div>
-                    <h4 class="texto-sub-cont">Capacidad</h4>
-                    <table class="table">
-                        <thead>
-                          <tr>
-                            <th scope="col">Nombre</th>
-                            <th scope="col">Disponibilidad</th>
-                            <th scope="col">Precio</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          <!-- Fila para la categoría VIP -->
-                          <tr>
-                            <th scope="row">VIP</th>
-                            <td>{{(capacidad_max/100)*10}}</td> <!-- Cálculo dinámico de la disponibilidad -->
-                            <td>1000</td>
-                          </tr>
-
-                          <!-- Fila para la categoría Normal -->
-                          <tr>
-                            <th scope="row">Normal</th>
-                            <td>{{(capacidad_max/100)*30}}</td> <!-- Cálculo dinámico de la disponibilidad -->
-                            <td>300</td>
-                          </tr>
-
-                          <!-- Fila para la categoría Pobre -->
-                          <tr>
-                            <th scope="row">Pobre</th>
-                            <td >{{(capacidad_max/100)*60}}</td> <!-- Cálculo dinámico de la disponibilidad -->
-                            <td>100</td>
-                          </tr>
-                        </tbody>
-                      </table>
-                </div>
-            </div>
+            <!--
+            
+            -->
+            
         </div>
         <div>
             <app-agenda/>
