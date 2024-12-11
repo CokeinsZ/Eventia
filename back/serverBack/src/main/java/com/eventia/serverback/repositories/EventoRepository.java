@@ -19,10 +19,12 @@ public class EventoRepository {
     }
 
     public ArrayList<Evento> getEventos(int pagina) {
-        String sql = "SELECT e.*, c.cat_nombre FROM eventos as e " +
-                    "LEFT JOIN evento_categoria as ec ON e.evt_id = ec.evt_id " +
-                    "LEFT JOIN categorias as c ON ec.cat_id = c.cat_id " +
-                    "LIMIT 10 OFFSET " + (pagina - 1) * 10;
+        String sql = "SELECT e.*, c.cat_nombre, AVG(cal.cal_num_estrellas) as promedio_calificaciones FROM eventos as e " +
+                "LEFT JOIN evento_categoria as ec ON e.evt_id = ec.evt_id " +
+                "LEFT JOIN categorias as c ON ec.cat_id = c.cat_id " +
+                "LEFT JOIN calificaciones as cal ON cal.cal_evento = e.evt_id " +
+                "GROUP BY cal.cal_evento, e.evt_id, ec.evt_id, c.cat_nombre " +
+                "LIMIT 10 OFFSET " + (pagina - 1) * 10;
         ArrayList<Evento> eventos = new ArrayList<>();
         try {
             ResultSet resultSet = jdbcTemplate.getDataSource().getConnection().createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE).executeQuery(sql);
@@ -81,6 +83,7 @@ public class EventoRepository {
         evento.setEvt_nombre(rs.getString("evt_nombre"));
         evento.setEvt_descripcion(rs.getString("evt_descripcion"));
         evento.setEvt_precio(rs.getFloat("evt_precio"));
+        evento.setPromedioCalificaciones(rs.getFloat("promedio_calificaciones"));
 
         return evento;
     }

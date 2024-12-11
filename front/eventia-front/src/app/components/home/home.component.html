@@ -12,56 +12,58 @@
           </a>
         </div>
         <div class="row justify-content-center d-flex">
-          <div class="col-5 bg-primary-subtle">
-            <a href="evento">
-              <app-normal-evt title= {{title[0]}}> </app-normal-evt><!--en este tipo de componente de almacenaran los eventos mas normales-->
-            </a>
+          <div class="row justify-content-center d-flex">
+            <div *ngIf="eventos.length > 0" class="col-5 bg-primary-subtle">
+              <a href="evento">
+                <app-normal-evt [evento]="eventos[0]"></app-normal-evt>
+              </a>
+            </div>
+            <div *ngIf="eventos.length > 1" class="col-5 bg-primary-subtle">
+              <a href="evento">
+                <app-normal-evt [evento]="eventos[1]"></app-normal-evt>
+              </a>
+            </div>
+            <div *ngIf="eventos.length > 2" class="col-5 bg-primary-subtle">
+              <a href="evento">
+                <app-normal-evt [evento]="eventos[2]"></app-normal-evt>
+              </a>
+            </div>
+            <div *ngIf="eventos.length > 3" class="col-5 bg-primary-subtle">
+              <a href="evento">
+                <app-normal-evt [evento]="eventos[3]"></app-normal-evt>
+              </a>
+            </div>
+            <div *ngIf="eventos.length > 4" class="col-5 bg-primary-subtle">
+              <a href="evento">
+                <app-normal-evt [evento]="eventos[4]"></app-normal-evt>
+              </a>
+            </div>
+            <div *ngIf="eventos.length > 5" class="col-5 bg-primary-subtle">
+              <a href="evento">
+                <app-normal-evt [evento]="eventos[5]"></app-normal-evt>
+              </a>
+            </div>
+            <div *ngIf="eventos.length > 6" class="col-5 bg-primary-subtle">
+              <a href="evento">
+                <app-normal-evt [evento]="eventos[6]"></app-normal-evt>
+              </a>
+            </div>
+            <div *ngIf="eventos.length > 7" class="col-5 bg-primary-subtle">
+              <a href="evento">
+                <app-normal-evt [evento]="eventos[7]"></app-normal-evt>
+              </a>
+            </div>
+            <div *ngIf="eventos.length > 8" class="col-5 bg-primary-subtle">
+              <a href="evento">
+                <app-normal-evt [evento]="eventos[8]"></app-normal-evt>
+              </a>
+            </div>
+            <div *ngIf="eventos.length > 9" class="col-5 bg-primary-subtle">
+              <a href="evento">
+                <app-normal-evt [evento]="eventos[9]"></app-normal-evt>
+              </a>
+            </div>
           </div>
-          <div class="col-5 bg-primary-subtle">
-            <a href="evento">
-              <app-normal-evt title= {{title[1]}}> </app-normal-evt><!--en este tipo de componente de almacenaran los eventos mas normales-->
-            </a>
-          </div>
-          <div class="col-5 bg-primary-subtle">
-            <a href="evento">
-              <app-normal-evt title= {{title[2]}}> </app-normal-evt><!--en este tipo de componente de almacenaran los eventos mas normales-->
-            </a>
-          </div>
-          <div class="col-5 bg-primary-subtle">
-            <a href="evento">
-              <app-normal-evt title= {{title[3]}}> </app-normal-evt><!--en este tipo de componente de almacenaran los eventos mas normales-->
-            </a>
-          </div>
-          <div class="col-5 bg-primary-subtle">
-            <a href="evento">
-              <app-normal-evt title= {{title[4]}}> </app-normal-evt><!--en este tipo de componente de almacenaran los eventos mas normales-->
-            </a>
-          </div>
-          <div class="col-5 bg-primary-subtle">
-            <a href="evento">
-              <app-normal-evt title= {{title[5]}}> </app-normal-evt><!--en este tipo de componente de almacenaran los eventos mas normales-->
-            </a>
-          </div>
-          <div class="col-5 bg-primary-subtle">
-            <a href="evento">
-              <app-normal-evt title= {{title[6]}}> </app-normal-evt><!--en este tipo de componente de almacenaran los eventos mas normales-->
-            </a>
-          </div>
-          <div class="col-5 bg-primary-subtle">
-            <a href="evento">
-              <app-normal-evt title= {{title[7]}}> </app-normal-evt><!--en este tipo de componente de almacenaran los eventos mas normales-->
-            </a>
-          </div>
-          <div class="col-5 bg-primary-subtle">
-            <a href="evento">
-              <app-normal-evt title= {{title[8]}}> </app-normal-evt><!--en este tipo de componente de almacenaran los eventos mas normales-->
-            </a>
-          </div>
-          <div class="col-5 bg-primary-subtle">
-            <a href="evento">
-              <app-normal-evt title= {{title[9]}}> </app-normal-evt><!--en este tipo de componente de almacenaran los eventos mas normales-->
-            </a>
-          </div>
-        </div>
+          
       </div>
 </div>
