@@ -12,4 +12,5 @@ export class PrintUserEvtOrgComponent {
   @Input() title='';
   @Input() users='';
   @Input() comentarios='';
+  @Input() estrellas='';
 }

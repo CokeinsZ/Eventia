@@ -43,5 +43,7 @@ public class CalificacionService {
     }
 
 
-
+    public ArrayList<Calificacion> getCalificacionesOrganizador(int id) {
+        return calificacionRepository.getCalificacionesOrganizador(id);
+    }
 }

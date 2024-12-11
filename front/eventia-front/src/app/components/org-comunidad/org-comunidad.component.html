@@ -8,54 +8,29 @@
             </th>
             <th>Evento</th>
             <th>Comentarios</th>
+            <th>Calificación</th>
             
 
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <th>
-              <div class="d-flex">
+            <tr *ngFor="let calificacion of calificaciones; let i = index">
+              <th>
+                <div class="d-flex">
                 <img src="profile pic.png" alt="profile icon" class="profile-img">
-                <app-print-user-evt-org users={{users[0]}}></app-print-user-evt-org>
-              </div>
-            </th>
-            <th scope="row">
-              <app-print-user-evt-org title={{title[0]}}></app-print-user-evt-org>
-            </th>
-            <th>
-              <app-print-user-evt-org comentarios={{comentarios[0]}}></app-print-user-evt-org>
-            </th>
-
-          </tr>
-          <tr>
-            <th>
-              <div class="d-flex">
-                <img src="profile pic.png" alt="profile icon" class="profile-img">
-                <app-print-user-evt-org users={{users[0]}}></app-print-user-evt-org>
-              </div>
-            </th>
-            <th scope="row">
-              <app-print-user-evt-org title={{title[0]}}></app-print-user-evt-org>
-            </th>
-            <th>
-              <app-print-user-evt-org comentarios={{comentarios[1]}}></app-print-user-evt-org>
-            </th>
-          </tr>
-          <tr>
-            <th>
-              <div class="d-flex">
-                <img src="profile pic.png" alt="profile icon" class="profile-img">
-                <app-print-user-evt-org users={{users[0]}}></app-print-user-evt-org>
-              </div>
-            </th>
-            <th scope="row">
-              <app-print-user-evt-org title={{title[0]}}></app-print-user-evt-org>
-            </th>
-            <th>
-              <app-print-user-evt-org comentarios={{comentarios[2]}}></app-print-user-evt-org>
-            </th>
-          </tr>
+                <app-print-user-evt-org [users]="users[i+1]"></app-print-user-evt-org>
+                </div>
+              </th>
+              <th scope="row">
+                <app-print-user-evt-org [title]="title[i+1]"></app-print-user-evt-org>
+              </th>
+              <th>
+                <app-print-user-evt-org [comentarios]="comentarios[i+1]"></app-print-user-evt-org>
+              </th>
+              <th>
+                <app-print-user-evt-org [estrellas]="estrellas[i+1]"></app-print-user-evt-org>
+              </th>
+            </tr>
         </tbody>
       </table>
 </div>

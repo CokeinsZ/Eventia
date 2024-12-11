@@ -187,4 +187,32 @@ public class CalificacionRepository {
 
         return promedio;
     }
+
+    public ArrayList<Calificacion> getCalificacionesOrganizador(int id) {
+        String sql = "SELECT * " +
+                "FROM calificaciones " +
+                "JOIN eventos ON calificaciones.cal_evento = eventos.evt_id " +
+                "WHERE eventos.evt_organizador = ?";
+        ArrayList<Calificacion> calificaciones = new ArrayList<>();
+        try {
+            PreparedStatement preparedStatement = jdbcTemplate.getDataSource().getConnection().prepareStatement(sql);
+            preparedStatement.setInt(1, id);
+
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                Calificacion calificacion = new Calificacion(
+                        resultSet.getInt("cal_usuario"),
+                        resultSet.getInt("cal_evento"),
+                        resultSet.getString("cal_comentario"),
+                        resultSet.getInt("cal_num_estrellas")
+                );
+                calificaciones.add(calificacion);
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return calificaciones;
+    }
 }

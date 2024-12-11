@@ -79,6 +79,11 @@ public class UsuarioController {
         return this.calificacionService.getCalificacionesUsuario(id);
     }
 
+    @GetMapping("/{id}/calificaciones/organizador")
+    public ArrayList<Calificacion> getCalificacionesOrganizador(@PathVariable int id) {
+        return this.calificacionService.getCalificacionesOrganizador(id);
+    }
+
     @GetMapping("/{id}/calificaciones/{idEvento}")
     public Calificacion getCalificacion(@PathVariable int id, @PathVariable int idEvento) {
         return this.calificacionService.getCalificacion(idEvento, id);
