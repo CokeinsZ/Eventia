@@ -1,6 +1,26 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { OptReservaComponent } from './opt-reserva/opt-reserva.component';
 import { InfoReservaComponent } from './info-reserva/info-reserva.component';
+import { ReservaService } from '../../servicios/reservas/reserva.service';
+import { UsuarioService } from '../../servicios/usuarios/usuario.service';
+
+interface Reserva {
+  rsv_id: number,
+  rsv_usuario: number,
+  rsv_agenda: number,
+  rsv_fecha: String,
+  rsv_asiento: String,
+  rsv_estado: String
+ 
+}
+
+interface Usuario {
+  usr_id: number,
+  usr_nombre1:string,
+  usr_nombre2:string,
+  
+ 
+}
 
 @Component({
   selector: 'app-reservas',
@@ -8,7 +28,17 @@ import { InfoReservaComponent } from './info-reserva/info-reserva.component';
   templateUrl: './reservas.component.html',
   styleUrl: './reservas.component.css'
 })
-export class ReservasComponent {
+export class ReservasComponent implements OnInit{
+reservas: Reserva[]=[];
+
+usuario:Usuario={
+  usr_id:0,
+  usr_nombre1:'',
+  usr_nombre2:'',
+};
+
+constructor(private ReservaService: ReservaService, private UsuarioService:UsuarioService) { }
+
   title: string[] = [
     "Conferencia de Tecnología",
     "Festival de Música",
@@ -55,5 +85,15 @@ export class ReservasComponent {
     "Concurso donde los participantes capturan la belleza de la noche a través de la fotografía."
   ];
   
+  ngOnInit(): void {
+    this.ReservaService.showReservas("3").subscribe((data:Reserva[])=> {
+      this.reservas=data;
+      
+      this.UsuarioService.getUsuario(this.reservas[0]['rsv_usuario'].toString()).subscribe((data:Usuario)=> {
+        this.usuario=data;
+      })
+    })
+
+  }
   
 }

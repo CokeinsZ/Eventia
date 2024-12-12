@@ -14,4 +14,11 @@ export class ReservaService {
     return this.http.get(`${this.url}/evento/${id}/ingresos`);
   }
 
+  showReservas(id: string): Observable<any> {
+    return this.http.request('GET', `${this.url}/usuario`, {
+      body: { idUsuario: id },
+    });
+  }
+  
+
 }
