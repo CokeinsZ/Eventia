@@ -89,4 +89,9 @@ public class UsuarioController {
         return this.calificacionService.getCalificacion(idEvento, id);
     }
 
+    @PutMapping("/saldo/retirar")
+    public float retirarSaldo(@RequestParam int id, @RequestParam float monto) {
+        return this.usuarioService.retirarSaldo(id, monto);
+    }
+
 }
