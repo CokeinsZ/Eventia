@@ -57,4 +57,13 @@ public class UsuarioService {
     public float updateSaldo(int usuarioId, float nuevoSaldo) {
         return this.usuarioRepository.updateSaldo(usuarioId, nuevoSaldo);
     }
+
+    public float retirarSaldo(int usuarioId, float monto) {
+        float saldoActual = getSaldo(usuarioId);
+        if (saldoActual >= monto) {
+            return updateSaldo(usuarioId, saldoActual - monto);
+        } else {
+            return -1;
+        }
+    }
 }
